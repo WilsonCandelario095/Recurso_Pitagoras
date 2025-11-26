@@ -149,9 +149,6 @@
 			);
 		);
 	</action>
-	
-
-
 
 	<!-- vr_auto_click() - call this action in the onover event of a
 	     hotspot to trigger automatically a click after some time.  -->
@@ -191,20 +188,16 @@
 		);
 	</action>
 
-
 	<!-- by pressing SPACE the headset could be re-centered -->
 	<events name="webvr_events" devices="html5" keep="true"
 	        onmousedown="if(webvr AND webvr.isenabled, webvr_showbuttons() );"
 	        />
-
-
 
 	<!-- when WebVR support is available show an EnterVR button -->
 	<action name="webvr_onavailable">
 		webvr.loadsettings();
 		if(layer[webvr_enterbutton], delayedcall(0.5, tween(layer[webvr_enterbutton].alpha,1.0); ); );
 	</action>
-	
 	
 	<action name="webvr_onunknowndevice">
 		if(webvr.isfake AND device.desktop AND webvr.havesettings == false,
@@ -218,7 +211,6 @@
 		  );
 	</action>
 
-
 	<action name="webvr_onentervr">
 		if(layer[webvr_enterbutton], tween(layer[webvr_enterbutton].alpha,0,0); );
 
@@ -229,7 +221,6 @@
 		
 		webvr_load_vr_cursor_hs();
 	</action>
-
 
 	<action name="webvr_onexitvr">
 		removehotspot('vr_cursor');
