@@ -64,6 +64,28 @@
 	               design_text_shadow="1"
 	               />
 
+	<action name="hide_spztano_elements">
+		set(hotspot[combo_btn_1].visible, false);
+		set(hotspot[obj_sphere].visible, false);
+		set(hotspot[obj_cube].visible, false);
+		set(hotspot[obj_cylinder].visible, false);
+		set(hotspot[obj_sphere2].visible, false);
+		set(hotspot[obj_cube2].visible, false);
+		set(hotspot[obj_cylinder2].visible, false);
+		set(hotspot[validate_btn].visible, false);
+	</action>
+
+	<action name="show_spztano_elements">
+		set(hotspot[combo_btn_1].visible, true);
+		set(hotspot[obj_sphere].visible, true);
+		set(hotspot[obj_cube].visible, true);
+		set(hotspot[obj_cylinder].visible, true);
+		set(hotspot[obj_sphere2].visible, true);
+		set(hotspot[obj_cube2].visible, true);
+		set(hotspot[obj_cylinder2].visible, true);
+		set(hotspot[validate_btn].visible, true);
+	</action>
+
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
 	    from above or optionally include one of the predefined designs from below.
@@ -87,28 +109,6 @@
 	<action name="action_Demo" type ="javascript" autorun="onload"><![CDATA[
 		let currentScene = krpano.get("xml.scene");
 		console.log(currentScene);
-	]]></action>
-	
-	<action name="guided_intro" type="javascript"><![CDATA[
-		krpano.call("lookto(30, 0, 80, smooth(3));");
-
-		setTimeout(() => {
-			krpano.call("lookto(-40, 10, 70, smooth(3), false);");
-		}, 3500);
-
-		setTimeout(() => {
-			krpano.call("lookto(0, -10, 80, smooth(3), false);");
-		}, 7000);
-
-		setTimeout(() => {
-			krpano.call("lookto(90, 0, 100, smooth(3), false);");
-		}, 10500);
-
-		// Zoom out al terminar el último lookto
-		setTimeout(() => {
-			krpano.call("zoomto(120, smooth(3));");   // cambia 120 por el FOV que quieras
-		}, 15000);  // 3.5s después del anterior
-
 	]]></action>
 
 	<action name="moveMyHotspot"><![CDATA[
@@ -251,7 +251,7 @@
 
 	</scene>
 
-	<scene name="scene_Spztano" title="Sótano - Menú" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_Spztano" title="Sótano - Menú" onstart="hide_spztano_elements();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -270,11 +270,12 @@
 		<!-- Botones de combinaciones -->
 		<hotspot name="cartel_Inicio"
 				 url="Images/balanceando_masas.png"
-				 ath="60"
+				 ath="180"
 				 atv="180"	
 				 scale="0.3"
 				 distorted="true"
 				 rotate="180"
+				 onclick="show_spztano_elements(); set(visible,false);"
 		/>
 
 		<!-- Botones de combinaciones -->
@@ -282,11 +283,13 @@
 				 url="Images/balanza.png"
 				 ath="180"
 				 atv="180"	
-				 scale="1"
+				 scale="0.1"
 		         title="1. Esfera (Izq) + Cubo (Der)"
 				 depth="100"
 				 handcoursor="false"
 				 enabled="false"
+				 distorted="true"
+				 rotate="180"
 		/>
 		<!-- Objetos draggables izquierda-->
 		<hotspot name="obj_sphere"
@@ -295,6 +298,7 @@
 		         atv="6"
 		         onclick="moveMyHotspot('obj_sphere'); set(enabled,false); delayedcall(1, set(enabled,true));"
 				 scale="0.2"
+				 distorted="true"
 		/>
 		<hotspot name="obj_cube"
 				 url="Images/cube.png"
@@ -302,6 +306,7 @@
 		         atv="-7"
 				 scale="0.05"
 		         onclick="moveMyHotspot('obj_cube'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				 distorted="true"
 		/>
 		<hotspot name="obj_cylinder"
 				 url="Images/cylinder.png"
@@ -309,6 +314,7 @@
 		         atv="-0.5"
 		         onclick="moveMyHotspot('obj_cylinder'); set(enabled,false); delayedcall(1, set(enabled,true));"
 				 scale="0.2"
+				 distorted="true"
 		/>
 
 		<!-- Objetos draggables derecha -->
@@ -318,12 +324,14 @@
 		         atv="6"
 		         onclick="moveMyHotspot2('obj_sphere2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 				 scale="0.2"
+				 distorted="true"
 		/>
 		<hotspot name="obj_cube2"
 				 url="Images/cube.png"
 		         ath="36"
 		         atv="-7"
 				 scale="0.05"
+				 distorted="true"
 		         onclick="moveMyHotspot2('obj_cube2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 		<hotspot name="obj_cylinder2"
@@ -332,6 +340,7 @@
 		         atv="-0.5"
 		         onclick="moveMyHotspot2('obj_cylinder2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 				 scale="0.2"
+				 distorted="true"
 		/>
 
 		<!-- Botón de validación -->
@@ -341,6 +350,7 @@
 				 ath="0"
 				 atv="-35"
 				 scale="0.1"
+				 distorted="true"
 		/>
 
 	</scene>
