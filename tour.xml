@@ -110,23 +110,6 @@
 		let currentScene = krpano.get("xml.scene");
 		console.log(currentScene);
 	]]></action>
-
-	<action name="moveMyHotspot"><![CDATA[
-		if(hotspot[%1].isMoved !== true,
-			copy(hotspot[%1].orig_ath, hotspot[%1].ath);
-			copy(hotspot[%1].orig_atv, hotspot[%1].atv);
-
-			set(hotspot[%1].ath, 45);
-			set(hotspot[%1].atv, -10);
-
-			set(hotspot[%1].isMoved, true);
-		,
-			set(hotspot[%1].ath, 140);
-			set(hotspot[%1].atv, 180);
-
-			set(hotspot[%1].isMoved, false);
-		);
-	]]></action>
 	
 	<action name="moveMyHotspot2"><![CDATA[
 		if(!hotspot[%1].isMoved,
@@ -143,12 +126,14 @@
 			tween(hotspot[%1].ath, calc(15.80 + rndath), 0.7, easeOutQuad);
 			tween(hotspot[%1].atv, calc(1.5 + rndatv), 0.7, easeOutQuad);
 
+			set(hotspot[%1].side, 'right');
 			set(hotspot[%1].isMoved, true);
 		,
 			// Regresar al origen guardado
 			tween(hotspot[%1].ath, get(hotspot[%1].orig_ath), 0.7, easeOutQuad);
 			tween(hotspot[%1].atv, get(hotspot[%1].orig_atv), 0.7, easeOutQuad);
 
+			set(hotspot[%1].side, null);	
 			set(hotspot[%1].isMoved, false);
 		);
 	]]></action>
@@ -168,16 +153,51 @@
 			tween(hotspot[%1].ath, calc(-16.80 + rndath), 0.7, easeOutQuad);
 			tween(hotspot[%1].atv, calc(-1.5 + rndatv), 0.7, easeOutQuad);
 
+			set(hotspot[%1].side, 'left');
 			set(hotspot[%1].isMoved, true);
 		,
 			// Regresar al origen guardado
 			tween(hotspot[%1].ath, get(hotspot[%1].orig_ath), 0.7, easeOutQuad);
 			tween(hotspot[%1].atv, get(hotspot[%1].orig_atv), 0.7, easeOutQuad);
 
+			set(hotspot[%1].side, null);
 			set(hotspot[%1].isMoved, false);
 		);
 	]]></action>
 
+	<action name="validateBalance"><![CDATA[
+    # Inicializar sumas
+    set(peso_left, 0);
+    set(peso_right, 0);
+
+    # Recorrer todos los hotspots
+    for(hs, hotspots,
+        # Si el hotspot pertenece a la escena actual
+        if(hotspot[hs].side != null,
+            
+            # Si está en la izquierda
+            if(hotspot[hs].side == 'left',
+                add(peso_left, hotspot[hs].weight);
+            );
+
+            # Si está en la derecha
+            if(hotspot[hs].side == 'right',
+                add(peso_right, hotspot[hs].weight);
+            );
+        );
+    );
+
+    # Comparar
+    sub(diff, peso_left, peso_right);
+    abs(diff);
+
+    if(diff <= 0.1,
+		set(hotspot[Balanza_Respuesta_Correcta].visible, true);
+    ,
+		set(hotspot[Balanza_Respuesta_Incorrecta].visible, true);
+    );
+
+	]]></action>
 
 	<set name="codigo_secreto" value="0" />
 
@@ -207,7 +227,7 @@
 	<events onloaded="actualizar_pantalla();" />
 
 
-<scene name="scene_Capilla_2_con_lira" title="Capilla 2 con lira" onstart="" onstop="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Capilla_2_con_lira.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+    <scene name="scene_Capilla_2_con_lira" title="Capilla 2 con lira" onstart="" onstop="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Capilla_2_con_lira.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -241,7 +261,6 @@
              
              ath="-2.9563107"  atv="-19.5445091" distorted="true"  width="200" height="50"
     />
-
 
 	<hotspot name="boton_incremento_fisico" 
              url="images/6numero.png"  
@@ -609,6 +628,7 @@
 		         onclick="moveMyHotspot('obj_sphere'); set(enabled,false); delayedcall(1, set(enabled,true));"
 				 scale="0.2"
 				 distorted="true"
+				 weight="calc(2)"
 		/>
 		<hotspot name="obj_cube"
 				 url="Images/cube.png"
@@ -617,6 +637,7 @@
 				 scale="0.05"
 		         onclick="moveMyHotspot('obj_cube'); set(enabled,false); delayedcall(1, set(enabled,true));"
 				 distorted="true"
+				 weight="1"
 		/>
 		<hotspot name="obj_cylinder"
 				 url="Images/cylinder.png"
@@ -635,7 +656,8 @@
 		         onclick="moveMyHotspot2('obj_sphere2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 				 scale="0.2"
 				 distorted="true"
-		/>
+				 weight="calc(2)"
+			/>
 		<hotspot name="obj_cube2"
 				 url="Images/cube.png"
 		         ath="36"
@@ -661,6 +683,7 @@
 				 atv="-35"
 				 scale="0.1"
 				 distorted="true"
+				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); validateBalance();"
 		/>
 
 	</scene>
@@ -686,6 +709,7 @@
 				 url="Images/backIcon.png"
 				 ath="180"
 				 atv="180"
+				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
 		/>
 
 		<hotspot name="Balanza_Respuesta_Correcta"
@@ -695,6 +719,7 @@
 				 atv="180"
 				 rotate="180"
 				 distorted="true"
+				 visible="false"
 		/>		
 		
 		<hotspot name="balanza_Respuesta_Incorrecta"
@@ -704,6 +729,7 @@
 				 atv="180"
 				 rotate="180"
 				 distorted="true"
+				 visible="false"
 		/>
 
 	</scene>
