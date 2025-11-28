@@ -355,7 +355,7 @@
 
 		    <!-- Style para el número 7: usa la imagen en `images/7numero.png` -->
 			<style name="number7_style"
-				url="../Images/7numero.png"
+				url="../images/7numero.png"
 				edge="center"
 				scale="1.0"
 				distorted="true"
@@ -363,7 +363,7 @@
 
 		    <!-- Style para el número 10: usa la imagen en `images/10numero.png` -->
 			<style name="number10_style"
-				url="../Images/10numero.png"
+				url="../images/10numero.png"
 				edge="center"
 				scale="1.0"
 				distorted="true"
@@ -371,7 +371,7 @@
 
 			<!-- Style para el número 3: apunta a `images/3numero.png` (añadir imagen si falta) -->
 			<style name="number3_style"
-				url="../Images/3numero.png"
+				url="../images/3numero.png"
 				edge="center"
 				scale="1.0"
 				distorted="true"
@@ -379,7 +379,7 @@
 
 			<!-- Style para el número 4: apunta a `images/4numero.png` -->
 			<style name="number4_style"
-				url="../Images/4numero.png"
+				url="../images/4numero.png"
 				edge="center"
 				scale="1.0"
 				distorted="true"
@@ -387,7 +387,7 @@
 
 			<!-- Style para el número 5: apunta a `images/5numero.png` -->
 			<style name="number5_style"
-				url="../Images/5numero.png"
+				url="../images/5numero.png"
 				edge="center"
 				scale="1.0"
 				distorted="true"
@@ -395,7 +395,7 @@
 
 			<!-- Style para el número 6: usa la imagen en `images/6numero.png` -->
 	<style name="number6_style"
-	      url="../Images/6numero.png"
+	      url="../images/6numero.png"
 	      edge="center"
 	      scale="1.0"
 	      distorted="true"
@@ -403,7 +403,7 @@
 
     <!-- Style para el número 11: usa la imagen en `images/11numero.png` -->
     <style name="number11_style"
-          url="../Images/11numero.png"
+          url="../images/11numero.png"
 		    edge="center"
 		    scale="1.0"
           distorted="true"
@@ -411,7 +411,7 @@
 
     <!-- Style para el número 17: usa la imagen en `images/17numero.png` -->
     <style name="number17_style"
-          url="../Images/17numero.png"
+          url="../images/17numero.png"
 		    edge="center"
 		    scale="1.0"
           distorted="true"
@@ -419,7 +419,7 @@
 
 	<!-- Style para el signo de interrogación subido por el usuario -->
 	<style name="signo_style"
-	      url="../Images/Signo-de-interrogacion.png"
+	      url="../images/Signo-de-interrogacion.png"
 	      edge="center"
 	      scale="1.0"
 	      distorted="true"

@@ -260,7 +260,7 @@
     />
 
  	<hotspot name="boton_incremento_fisico" 
-	    url="Images/6numero.png" 
+	    url="images/6numero.png" 
 	    ath="-9.0318164" atv="1.1763250"
             distorted="true" 
             width="100" height="100" 
@@ -268,7 +268,7 @@
     />
 
     <hotspot name="boton_decremento_fisico" 
-            url="Images/7numero.png" 
+            url="images/7numero.png" 
 	    ath="5.7067884" atv="2.0257322"
             distorted="true" 
             width="100" height="100" 
@@ -281,7 +281,7 @@
 			onclick="text2('Lira', 'Información sobre la lira', 400, 150);" />
 
 		<hotspot name="LiraInfo" 
-         url="Images/LiraInfo.png" 
+         url="images/LiraInfo.png" 
          scale="0.8" 
 		 ath="-45.8809090" atv="-21.0074160"
 		 rx="-10" ry="0" rz="0"
@@ -359,7 +359,7 @@
 			onclick="text2('Lira', 'Información sobre la lira', 400, 150);" />
 
 		<hotspot name="LiraInfo" 
-         url="Images/LiraInfo.png" 
+         url="images/LiraInfo.png" 
          scale="0.8" 
 		 ath="-45.8809090" atv="-21.0074160"
 		 rx="-10" ry="0" rz="0"
@@ -425,7 +425,7 @@
 			onclick="text2('Lira', 'Información sobre la lira', 400, 150);" />
 
 		<hotspot name="LiraInfo" 
-         url="Images/LiraInfo.png" 
+         url="images/LiraInfo.png" 
          scale="0.8" 
 		 ath="-45.8809090" atv="-21.0074160"
 		 rx="-10" ry="0" rz="0"
@@ -490,7 +490,7 @@
 			onclick="text2('Lira', 'Información sobre la lira', 400, 150);" />
 
 		<hotspot name="LiraInfo" 
-         url="Images/LiraInfo.png" 
+         url="images/LiraInfo.png" 
          scale="0.8" 
 		 ath="-45.8809090" atv="-21.0074160"
 		 rx="-10" ry="0" rz="0"
@@ -602,7 +602,7 @@
 
 		<!-- Botones de combinaciones -->
 		<hotspot name="cartel_Inicio"
-				 url="Images/balanceando_masas.png"
+				 url="images/balanceando_masas.png"
 				 ath="180"
 				 atv="180"	
 				 scale="0.3"
@@ -613,7 +613,7 @@
 
 		<!-- Botones de combinaciones -->
 		<hotspot name="combo_btn_1"
-				 url="Images/balanza.png"
+				 url="images/balanza.png"
 				 ath="180"
 				 atv="180"	
 				 scale="0.1"
@@ -626,7 +626,7 @@
 		/>
 		<!-- Objetos draggables izquierda-->
 		<hotspot name="obj_sphere"
-				 url="Images/sphere.png"
+				 url="images/sphere.png"
 		         ath="-36"
 		         atv="6"
 		         onclick="moveMyHotspot('obj_sphere'); set(enabled,false); delayedcall(1, set(enabled,true));"
@@ -635,7 +635,7 @@
 				 weight="calc(2)"
 		/>
 		<hotspot name="obj_cube"
-				 url="Images/cube.png"
+				 url="images/cube.png"
 		         ath="-36"
 		         atv="-7"
 				 scale="0.05"
@@ -644,7 +644,7 @@
 				 weight="1"
 		/>
 		<hotspot name="obj_cylinder"
-				 url="Images/cylinder.png"
+				 url="images/cylinder.png"
 		         ath="-36"
 		         atv="-0.5"
 		         onclick="moveMyHotspot('obj_cylinder'); set(enabled,false); delayedcall(1, set(enabled,true));"
@@ -654,7 +654,7 @@
 
 		<!-- Objetos draggables derecha -->
 		<hotspot name="obj_sphere2"
-				 url="Images/sphere.png"
+				 url="images/sphere.png"
 		         ath="36"
 		         atv="6"
 		         onclick="moveMyHotspot2('obj_sphere2'); set(enabled,false); delayedcall(1, set(enabled,true));"
@@ -663,7 +663,7 @@
 				 weight="calc(2)"
 			/>
 		<hotspot name="obj_cube2"
-				 url="Images/cube.png"
+				 url="images/cube.png"
 		         ath="36"
 		         atv="-7"
 				 scale="0.05"
@@ -671,7 +671,7 @@
 		         onclick="moveMyHotspot2('obj_cube2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 		<hotspot name="obj_cylinder2"
-				 url="Images/cylinder.png"
+				 url="images/cylinder.png"
 		         ath="36"
 		         atv="-0.5"
 		         onclick="moveMyHotspot2('obj_cylinder2'); set(enabled,false); delayedcall(1, set(enabled,true));"
@@ -682,7 +682,7 @@
 		<!-- Botón de validación -->
 		<hotspot name="validate_btn"
 		         style="skin_hotspotstyle2"
-				 url="Images/checkMark.png"
+				 url="images/checkMark.png"
 				 ath="0"
 				 atv="-35"
 				 scale="0.1"
@@ -710,7 +710,7 @@
 
 		<hotspot name="back_btn"
 		         style="skin_hotspotstyle2"
-				 url="Images/backIcon.png"
+				 url="images/backIcon.png"
 				 ath="180"
 				 atv="180"
 				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
@@ -718,7 +718,7 @@
 
 		<hotspot name="Balanza_Respuesta_Correcta"
 				 scale="0.5"
-				 url="Images/Balanza_Respuesta_Correcta.png"
+				 url="images/Balanza_Respuesta_Correcta.png"
 				 ath="180"
 				 atv="180"
 				 rotate="180"
@@ -728,7 +728,7 @@
 		
 		<hotspot name="balanza_Respuesta_Incorrecta"
 				 scale="0.5"
-				 url="Images/Balanza_Respuesta_Incorrecta.png"
+				 url="images/Balanza_Respuesta_Incorrecta.png"
 				 ath="130"
 				 atv="180"
 				 rotate="180"
