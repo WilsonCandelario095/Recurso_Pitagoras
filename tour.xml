@@ -77,6 +77,17 @@
 		set(hotspot[validate_btn].visible, false);
 	</action>
 
+	<action name="hide_astrolabio_elements">
+		set(hotspot[astrolabio].visible, false);
+		set(hotspot[circulo].visible, false);
+		set(hotspot[obj_cube].visible, false);
+		set(hotspot[obj_cylinder].visible, false);
+		set(hotspot[obj_sphere2].visible, false);
+		set(hotspot[obj_cube2].visible, false);
+		set(hotspot[obj_cylinder2].visible, false);
+		set(hotspot[validate_btn].visible, false);
+	</action>
+
 	<action name="show_spztano_elements">
 		set(hotspot[combo_btn_1].visible, true);
 		set(hotspot[obj_sphere].visible, true);
@@ -88,6 +99,16 @@
 		set(hotspot[validate_btn].visible, true);
 	</action>
 
+	<action name="show_astrolabio_elements">
+		set(hotspot[astrolabio].visible, true);
+		set(hotspot[circulo].visible, true);
+		set(hotspot[obj_cube].visible, true);
+		set(hotspot[obj_cylinder].visible, true);
+		set(hotspot[obj_sphere2].visible, true);
+		set(hotspot[obj_cube2].visible, true);
+		set(hotspot[obj_cylinder2].visible, true);
+		set(hotspot[validate_btn].visible, true);
+	</action>
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
 	    from above or optionally include one of the predefined designs from below.
@@ -548,7 +569,7 @@
 
 	</scene>
 
-	<scene name="scene_Espacio" title="Espacio" onstart="guided_intro();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Espacio.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_Espacio" title="Espacio" onstart="hide_astrolabio_elements();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Espacio.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -564,6 +585,16 @@
 			<cube url="panos/Espacio.tiles/vr/pano_%s.jpg" />
 		</image>
 
+		<hotspot name="cartel_Inicio"
+				 url="images/astrolabio_info.png"
+				 ath="180"
+				 atv="180"	
+				 scale="1.2"
+				 distorted="true"
+				 rotate="180"
+				 onclick="show_astrolabio_elements(); set(visible,false);"
+		/>
+
 		<hotspot name="astrolabio"
 			url="images/Astrolabio.webp" 
 			distorted="true"
@@ -572,7 +603,7 @@
 			atv="-19.5445091">
 		</hotspot>
 
-		<hotspot name="circulo.png"
+		<hotspot name="circulo"
 			url="images/circulo.png" 
 			distorted="true"
 			scale="0.4"
@@ -687,7 +718,7 @@
 
 		<!-- Botones de combinaciones -->
 		<hotspot name="cartel_Inicio"
-				 url="images/balanceando_masas.png"
+				 url="images/balanceando_info.png"
 				 ath="180"
 				 atv="180"	
 				 scale="0.4"
