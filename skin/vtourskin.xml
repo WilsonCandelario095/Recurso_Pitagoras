@@ -359,7 +359,7 @@
 		edge="center"
 		tooltip="" />
 
-		    <!-- Style para el número 7: usa la imagen en `images/7numero.png` -->
+		    <!-- Style para el número 7 -->
 			<style name="number7_style"
 				url="../images/7numero.png"
 				edge="center"
@@ -367,7 +367,7 @@
 				distorted="true"
 				tooltip="" />
 
-		    <!-- Style para el número 10: usa la imagen en `images/10numero.png` -->
+		    <!-- Style para el número 10 -->
 			<style name="number10_style"
 				url="../images/10numero.png"
 				edge="center"
@@ -375,49 +375,49 @@
 				distorted="true"
 				tooltip="" />
 
-			<!-- Style para el número 3: apunta a `images/3numero.png` (añadir imagen si falta) -->
+			<!-- Style para el número 3 -->
 			<style name="number3_style"
-				url="../images/3numero.png"
+				url="../numeros/3.png"
 				edge="center"
 				scale="1.0"
 				distorted="true"
 				tooltip="" />
 
-			<!-- Style para el número 4: apunta a `images/4numero.png` -->
+			<!-- Style para el número 4 -->
 			<style name="number4_style"
-				url="../images/4numero.png"
+				url="../numeros/4.png"
 				edge="center"
 				scale="1.0"
 				distorted="true"
 				tooltip="" />
 
-			<!-- Style para el número 5: apunta a `images/5numero.png` -->
+			<!-- Style para el número 5 -->
 			<style name="number5_style"
-				url="../images/5numero.png"
+				url="../numeros/5.png"
 				edge="center"
 				scale="1.0"
 				distorted="true"
 				tooltip="" />
 
-			<!-- Style para el número 6: usa la imagen en `images/6numero.png` -->
+			<!-- Style para el número 6 -->
 	<style name="number6_style"
-	      url="../images/6numero.png"
+	      url="../numeros/6.png"
 	      edge="center"
 	      scale="1.0"
 	      distorted="true"
 	      tooltip="" />
 
-    <!-- Style para el número 11: usa la imagen en `images/11numero.png` -->
-    <style name="number11_style"
-          url="../images/11numero.png"
+    <!-- Style para el número 1 -->
+    <style name="number1_style"
+          url="../numeros/1.png"
 		    edge="center"
 		    scale="1.0"
           distorted="true"
           tooltip="" />
 
-    <!-- Style para el número 17: usa la imagen en `images/17numero.png` -->
-    <style name="number17_style"
-          url="../images/17numero.png"
+    <!-- Style para el número 9 -->
+    <style name="number9_style"
+          url="../numeros/9.png"
 		    edge="center"
 		    scale="1.0"
           distorted="true"
