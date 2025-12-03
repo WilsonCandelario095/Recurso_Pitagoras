@@ -766,24 +766,6 @@ set(result, 'none');
 
 	</scene>
 
-	<scene name="scene_Capilla" title="Capilla" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Capilla.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/Capilla.tiles/preview.jpg" />
-
-		<image if="!(webvr.isenabled OR device.mobilevr)">
-			<cube url="panos/Capilla.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280" />
-		</image>
-
-		<image if="webvr.isenabled OR device.mobilevr">
-			<cube url="panos/Capilla.tiles/vr/pano_%s.jpg" />
-		</image>
-
-	</scene>
-
 	<scene name="scene_Espacio" title="Espacio" onstart="hide_astrolabio_elements();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Espacio.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -946,7 +928,7 @@ set(result, 'none');
 			<point ath="32.35166854690351" atv="-0.5966414508463503" />
 		</hotspot>
 
-		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="show_astrolabio_elements4();">
+		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="show_astrolabio_elements4(); loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));">
 			<point ath="32.9514917531331" atv="1.7847113239700225" />
 			<point ath="45.867033296663635" atv="1.273201424326321" />
 			<point ath="46.09320421943801" atv="6.997915021013339" />
@@ -954,26 +936,6 @@ set(result, 'none');
 		</hotspot>
 
 	</scene>
-
-	<scene name="scene_Pilares" title="Pilares" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Pilares.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/Pilares.tiles/preview.jpg" />
-
-		<image if="!(webvr.isenabled OR device.mobilevr)">
-			<cube url="panos/Pilares.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,640,1280" />
-		</image>
-
-		<image if="webvr.isenabled OR device.mobilevr">
-			<cube url="panos/Pilares.tiles/vr/pano_%s.jpg" />
-		</image>
-
-	</scene>
-
-	set(validacion_resultado, null);
 
 	<scene name="scene_Spztano" title="Sótano - Menú" onstart="hide_spztano_elements();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
@@ -1074,18 +1036,18 @@ set(result, 'none');
 		/>
 
 		<hotspot name="Balanza_Respuesta_Correcta"
-				 scale="0.4"
+				 scale="0.2"
 				 url="images/Balanceando_Masas_Correcta.png"
 				 ath="180"
 				 atv="180"
 				 rotate="180"
 				 distorted="true"
-				 visible="false"
+				 visible="true"
 				 
 		/>		
 		
 		<hotspot name="Balanza_Respuesta_Incorrecta"
-				 scale="0.4"
+				 scale="0.2"
 				 url="images/Balanceando_Masas_Incorrecta.png"
 				 ath="180"
 				 atv="180"
