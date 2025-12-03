@@ -153,6 +153,9 @@
 	]]></action>
 
 	<action name="moveMyHotspot"><![CDATA[
+	js(console.log('Peso asignado: ' + %1));
+	js(console.log('peso_izq ahora vale: ' + peso_izq));
+
 		if(!hotspot[%1].isMoved,
 
 			// Guardar posición original
@@ -192,19 +195,19 @@
             
             # Si está en la izquierda
             if(hotspot[hs].side == 'left',
-                add(peso_left, hotspot[hs].weight);
+				add(peso_left, calc(hotspot[hs].weight));
             );
 
             # Si está en la derecha
             if(hotspot[hs].side == 'right',
-                add(peso_right, hotspot[hs].weight);
+                add(peso_right, calc(hotspot[hs].weight));
             );
         );
     );
 
     # Comparar
     sub(diff, peso_left, peso_right);
-    abs(diff);
+	set(diff, calc(abs(diff)));
 
     if(diff <= 0.1,
 		set(hotspot[Balanza_Respuesta_Correcta].visible, true);
@@ -648,14 +651,6 @@
 			atv="-19.5445091">
 		</hotspot>
 
-		<hotspot name="circulo"
-			url="images/circulo.png" 
-			distorted="true"
-			scale="0.4"
-			ath="-20.9563107" 
-			atv="-19.5445091">
-		</hotspot>
-
 	</scene>
 
 
@@ -679,16 +674,8 @@
 			url="images/Astrolabio.webp" 
 			distorted="true"
 			scale="0.8"
-			ath="-2.9563107" 
-			atv="-19.5445091">
-		</hotspot>
-
-		<hotspot name="elipse.png"
-			url="images/elipse.png" 
-			distorted="true"
-			scale="0.4"
-			ath="-20.9563107" 
-			atv="-19.5445091">
+			ath="-25.9563107" 
+			atv="-5.5445091">
 		</hotspot>
 
 	</scene>
@@ -717,14 +704,6 @@
 			atv="-19.5445091">
 		</hotspot>
 
-		<hotspot name="parabola.png"
-			url="images/parabola.png" 
-			distorted="true"
-			scale="0.4"
-			ath="-20.9563107" 
-			atv="-19.5445091">
-		</hotspot>
-
 	</scene>
 
 	<scene name="scene_Pilares" title="Pilares" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Pilares.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -744,6 +723,8 @@
 		</image>
 
 	</scene>
+
+	set(validacion_resultado, null);
 
 	<scene name="scene_Spztano" title="Sótano - Menú" onstart="hide_spztano_elements();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
@@ -766,7 +747,7 @@
 				 url="images/balanceando_info.png"
 				 ath="180"
 				 atv="180"	
-				 scale="0.4"
+				 scale="1"
 				 distorted="true"
 				 rotate="180"
 				 onclick="show_spztano_elements(); set(visible,false);"
@@ -794,23 +775,7 @@
 				 distorted="true"
 				 weight="2"
 		/>
-		<hotspot name="obj_cube"
-				 url="images/cube.png"
-		         ath="-36"
-		         atv="-7"
-				 scale="0.05"
-		         onclick="moveMyHotspot('obj_cube'); set(enabled,false); delayedcall(1, set(enabled,true));"
-				 distorted="true"
-				 weight="1"
-		/>
-		<hotspot name="obj_cylinder"
-				 url="images/cylinder.png"
-		         ath="-36"
-		         atv="-0.5"
-		         onclick="moveMyHotspot('obj_cylinder'); set(enabled,false); delayedcall(1, set(enabled,true));"
-				 scale="0.2"
-				 distorted="true"
-		/>
+
 
 		<!-- Objetos draggables derecha -->
 		<hotspot name="obj_sphere2"
@@ -822,22 +787,7 @@
 				 distorted="true"
 				 weight="2"
 			/>
-		<hotspot name="obj_cube2"
-				 url="images/cube.png"
-		         ath="36"
-		         atv="-7"
-				 scale="0.05"
-				 distorted="true"
-		         onclick="moveMyHotspot2('obj_cube2'); set(enabled,false); delayedcall(1, set(enabled,true));"
-		/>
-		<hotspot name="obj_cylinder2"
-				 url="images/cylinder.png"
-		         ath="36"
-		         atv="-0.5"
-		         onclick="moveMyHotspot2('obj_cylinder2'); set(enabled,false); delayedcall(1, set(enabled,true));"
-				 scale="0.2"
-				 distorted="true"
-		/>
+
 
 		<!-- Botón de validación -->
 		<hotspot name="validate_btn"
@@ -847,12 +797,12 @@
 				 atv="-25"
 				 scale="0.06"
 				 distorted="true"
-				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); validateBalance();"
+				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); validateBalance(); "
 		/>
 
 	</scene>
 
-	<scene name="scene_Spztano_game" title="Sótano - Juego" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_Spztano_game" title="Sótano - Juego" onstart="	" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -872,7 +822,7 @@
 		         style="skin_hotspotstyle2"
 				 url="images/backIcon.png"
 				 scale="0.06"
-				 ath="0"
+				 ath="-40"
 				 atv="-25"
 				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
 		/>
@@ -888,7 +838,7 @@
 				 
 		/>		
 		
-		<hotspot name="balanza_Respuesta_Incorrecta"
+		<hotspot name="Balanza_Respuesta_Incorrecta"
 				 scale="0.4"
 				 url="images/Balanza_Respuesta_Incorrecta.png"
 				 ath="180"
