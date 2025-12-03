@@ -425,7 +425,7 @@
 
 	<!-- Style para el signo de interrogación subido por el usuario -->
 	<style name="signo_style"
-	      url="../images/Signo-de-interrogacion.png"
+	      url="../images/interrogacion.png"
 	      edge="center"
 	      scale="1.0"
 	      distorted="true"
