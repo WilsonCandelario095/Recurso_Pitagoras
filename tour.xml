@@ -276,7 +276,7 @@ set(result, 'none');
 	<events onloaded="actualizar_pantalla();" />
 
 	<layer name="creditos" url="images/creditos.png" keep="true" enabled="true" align="centercenter" x="0" y="0" visible="false" alpha="1" scale="1.3" scale.mobile="0.2" onclick="set(layer[creditos].visible,false);"/>
-	<layer name="botoncreditos" url="images/creditos.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2" onclick="set(layer[creditos].visible,true);"/>
+	<layer name="botoncreditos" url="images/creditosboton.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.2ah" scale.mobile="0.2" onclick="set(layer[creditos].visible,true);"/>
 
 
 	<scene name="scene_Capilla_2_con_lira" title="Capilla 2 con lira" onstart="" onstop="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Capilla_2_con_lira.tiles/thumb.jpg" lat="" lng="" alt="" heading="" onloaded="actualizar_pantalla(); init_capilla2_hotspots();"> ```
