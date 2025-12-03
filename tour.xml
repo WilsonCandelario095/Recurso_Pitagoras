@@ -77,6 +77,18 @@
 		set(hotspot[validate_btn].visible, false);
 	</action>
 
+
+	<action name="show_spztano_elements">
+		set(hotspot[combo_btn_1].visible, true);
+		set(hotspot[obj_sphere].visible, true);
+		set(hotspot[obj_cube].visible, true);
+		set(hotspot[obj_cylinder].visible, true);
+		set(hotspot[obj_sphere2].visible, true);
+		set(hotspot[obj_cube2].visible, true);
+		set(hotspot[obj_cylinder2].visible, true);	
+		set(hotspot[validate_btn].visible, true);
+	</action>
+
 	<action name="hide_astrolabio_elements">
 		set(hotspot[astrolabio].visible, false);
 		set(hotspot[eje_circulo].visible, false);
@@ -100,17 +112,14 @@
 		set(hotspot[poliE_3].visible, false);
 		set(hotspot[poliE_4].visible, false);
 		set(hotspot[poliE_5].visible, false);
-	</action>
 
-	<action name="show_spztano_elements">
-		set(hotspot[combo_btn_1].visible, true);
-		set(hotspot[obj_sphere].visible, true);
-		set(hotspot[obj_cube].visible, true);
-		set(hotspot[obj_cylinder].visible, true);
-		set(hotspot[obj_sphere2].visible, true);
-		set(hotspot[obj_cube2].visible, true);
-		set(hotspot[obj_cylinder2].visible, true);
-		set(hotspot[validate_btn].visible, true);
+		set(hotspot[correctoc].visible, false);
+		set(hotspot[incorrectoc].visible, false);
+		set(hotspot[correctop].visible, false);
+		set(hotspot[incorrectop].visible, false);
+		set(hotspot[correctoe].visible, false);
+		set(hotspot[incorrectoe].visible, false);
+
 	</action>
 
 	<action name="show_astrolabio_elements1">
@@ -140,6 +149,27 @@
 		set(hotspot[polyP_3].visible, true);
 		set(hotspot[polyP_4].visible, true);
 		set(hotspot[polyP_5].visible, true);
+
+		set(hotspot[correctoc].visible, false);
+	</action>
+
+	<action name="reset_astrolabio_elements2">
+		set(hotspot[poly_r1].Enabled, false);
+		set(hotspot[poly_r2].Enabled, false);
+		set(hotspot[poly_r3].Enabled, false);
+		set(hotspot[poly_r4].Enabled, false);
+		set(hotspot[poly_r5].Enabled, false);
+
+	</action>
+
+	<action name="resete_astrolabio_elements2">
+		set(hotspot[poly_r1].Enabled, true);
+		set(hotspot[poly_r2].Enabled, true);
+		set(hotspot[poly_r3].Enabled, true);
+		set(hotspot[poly_r4].Enabled, true);
+		set(hotspot[poly_r5].Enabled, true);
+
+		set(hotspot[correctoc].visible, false);
 	</action>
 
 	<action name="show_astrolabio_elements3">
@@ -824,14 +854,14 @@ set(result, 'none');
 			<point ath="44.94182526532802" atv="-8.672210857842236" />
 		</hotspot>
 
-		<hotspot name="poly_r3 " fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="poly_r3" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
 			<point ath="7.5660126551924805" atv="-0.8122297686719372" />
 			<point ath="21.298640576602793" atv="-1.0526451280065903" />
 			<point ath="21.380992399376282" atv="3.059029544241807" />
 			<point ath="7.689678377947416" atv="3.077992191195081" />
 		</hotspot>
 
-		<hotspot name="poly_r4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la parábola" onclick="show_astrolabio_elements2();">
+		<hotspot name="poly_r4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la parábola" onclick="set(hotspot[correctoc].visible, true);">
 			<point ath="30.45937952372543" atv="-0.7618300419460635" />
 			<point ath="43.48095783550434" atv="-1.0414479551907647" />
 			<point ath="43.642420852445355" atv="2.6645726284895166" />
@@ -845,6 +875,24 @@ set(result, 'none');
 			<point ath="21.510153837629503" atv="8.739463155276464" />
 		</hotspot>
 
+		<hotspot name="correctoc"
+			url="images/Correctog.png" 
+			distorted="true"
+			scale="0.06"
+			ath="28.3363107" 
+			atv="15.17445091"
+			onclick="show_astrolabio_elements2();">
+		</hotspot>
+
+		<hotspot name="incorrectoc"
+			url="images/Correctog.png" 
+			distorted="true"
+			scale="0.06"
+			ath="28.3363107" 
+			atv="15.17445091"
+			onclick="set(hotspot[correctoc].visible, false); set(hotspot[correctoc].enable, false); ">
+		</hotspot>
+		
 		<hotspot name="eje_parabola"
 			url="images/Ejercicio_Parabola.png" 
 			distorted="true"
@@ -888,6 +936,24 @@ set(result, 'none');
 			<point ath="44.14285458372706" atv="1.6607019281838522" />
 			<point ath="44.068963862887415" atv="7.072619377963893" />
 			<point ath="30.405621144986924" atv="7.542404565099991" />
+		</hotspot>
+
+		<hotspot name="correctop"
+			url="images/Correctog.png" 
+			distorted="true"
+			scale="0.06"
+			ath="28.3363107" 
+			atv="15.17445091"
+			onclick="show_astrolabio_elements2();">
+		</hotspot>
+
+		<hotspot name="incorrectop"
+			url="images/Correctog.png" 
+			distorted="true"
+			scale="0.06"
+			ath="28.3363107" 
+			atv="15.17445091"
+			onclick="set(hotspot[correctoc].visible, false); set(hotspot[correctoc].enabled, false); ">
 		</hotspot>
 
 		<hotspot name="eje_elipse"
@@ -935,6 +1001,23 @@ set(result, 'none');
 			<point ath="32.918003126870985" atv="7.558881983825053" />
 		</hotspot>
 
+		<hotspot name="correctoe"
+			url="images/Correctog.png" 
+			distorted="true"
+			scale="0.06"
+			ath="28.3363107" 
+			atv="15.17445091"
+			onclick="show_astrolabio_elements2();">
+		</hotspot>
+
+		<hotspot name="incorrectoe"
+			url="images/Correctog.png" 
+			distorted="true"
+			scale="0.06"
+			ath="28.3363107" 
+			atv="15.17445091"
+			onclick="set(hotspot[correctoc].visible, false); set(hotspot[correctoc].enable, false); ">
+		</hotspot>
 	</scene>
 
 	<scene name="scene_Spztano" title="Sótano - Menú" onstart="hide_spztano_elements();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
