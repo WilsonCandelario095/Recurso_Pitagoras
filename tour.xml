@@ -160,6 +160,7 @@
 		set(hotspot[poly_r4].Enabled, false);
 		set(hotspot[poly_r5].Enabled, false);
 
+		set(hotspot[incorrectoc].visible, true);
 	</action>
 
 	<action name="resete_astrolabio_elements2">
@@ -169,7 +170,7 @@
 		set(hotspot[poly_r4].Enabled, true);
 		set(hotspot[poly_r5].Enabled, true);
 
-		set(hotspot[correctoc].visible, false);
+		set(hotspot[incorrectoc].visible, false);
 	</action>
 
 	<action name="show_astrolabio_elements3">
@@ -188,6 +189,27 @@
 		set(hotspot[poliE_4].visible, true);
 		set(hotspot[poliE_5].visible, true);
 
+		set(hotspot[correctop].visible, false);
+	</action>
+
+	<action name="reset_astrolabio_elements3">
+		set(hotspot[polyP_1].Enabled, false);
+		set(hotspot[polyP_2].Enabled, false);
+		set(hotspot[polyP_3].Enabled, false);
+		set(hotspot[polyP_4].Enabled, false);
+		set(hotspot[polyP_5].Enabled, false);
+
+		set(hotspot[incorrectop].visible, true);
+	</action>
+
+	<action name="resete_astrolabio_elements3">
+		set(hotspot[polyP_1].Enabled, true);
+		set(hotspot[polyP_2].Enabled, true);
+		set(hotspot[polyP_3].Enabled, true);
+		set(hotspot[polyP_4].Enabled, true);
+		set(hotspot[polyP_5].Enabled, true);
+
+		set(hotspot[incorrectop].visible, false);
 	</action>
 
 	<action name="show_astrolabio_elements4">
@@ -202,6 +224,25 @@
 		set(hotspot[poliE_5].visible, false);
 	</action>
 
+	<action name="reset_astrolabio_elements4">
+		set(hotspot[poliE_1].Enabled, false);
+		set(hotspot[poliE_2].Enabled, false);
+		set(hotspot[poliE_3].Enabled, false);
+		set(hotspot[poliE_4].Enabled, false);
+		set(hotspot[poliE_5].Enabled, false);
+
+		set(hotspot[incorrectoe].visible, true);
+	</action>
+
+	<action name="resete_astrolabio_elements4">
+		set(hotspot[poliE_1].Enabled, true);
+		set(hotspot[poliE_2].Enabled, true);
+		set(hotspot[poliE_3].Enabled, true);
+		set(hotspot[poliE_4].Enabled, true);
+		set(hotspot[poliE_5].Enabled, true);
+
+		set(hotspot[incorrectoe].visible, false);
+	</action>
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
 	    from above or optionally include one of the predefined designs from below.
@@ -813,10 +854,10 @@ set(result, 'none');
 		</image>
 
 		<hotspot name="cartel_Inicio"
-			url="images/astrolabio_info.png"
+			url="images/El_astrolabio.png"
 			ath="180"
 			atv="180"	
-			scale="1.2"
+			scale="0.2"
 			distorted="true"
 			rotate="180"
 			onclick="show_astrolabio_elements1(); set(visible,false);"
@@ -840,21 +881,21 @@ set(result, 'none');
 			onclick="">
 		</hotspot>
 
-		<hotspot name="poly_r1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área del círculo" onclick="">
+		<hotspot name="poly_r1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área del círculo" onclick="reset_astrolabio_elements2();">
 			<point ath="6.724088602628285" atv="-10.05012019000466" />
 			<point ath="6.91019897334786" atv="-4.080215872228587" />
 			<point ath="20.729585754115533" atv="-3.9694534719244325" />
 			<point ath="20.50551697450004" atv="-10.410664457599829" />
 		</hotspot>
 
-		<hotspot name="poly_r2" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Circunferencia inscrita" onclick="">
+		<hotspot name="poly_r2" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Circunferencia inscrita" onclick="reset_astrolabio_elements2();">
 			<point ath="34.34577846894115" atv="-8.791119910896713" />
 			<point ath="34.54861821743725" atv="-3.3088698509970627" />
 			<point ath="45.18471712513826" atv="-3.154453148394765" />
 			<point ath="44.94182526532802" atv="-8.672210857842236" />
 		</hotspot>
 
-		<hotspot name="poly_r3" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="poly_r3" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="reset_astrolabio_elements2();">
 			<point ath="7.5660126551924805" atv="-0.8122297686719372" />
 			<point ath="21.298640576602793" atv="-1.0526451280065903" />
 			<point ath="21.380992399376282" atv="3.059029544241807" />
@@ -868,7 +909,7 @@ set(result, 'none');
 			<point ath="30.51957363440181" atv="2.9167249566499076" />
 		</hotspot>
 
-		<hotspot name="poly_r5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="poly_r5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="reset_astrolabio_elements2();">
 			<point ath="21.31568335184852" atv="3.664147812281738" />
 			<point ath="34.20660245916923" atv="3.4021328586990705" />
 			<point ath="34.34690784999202" atv="8.655887241457437" />
@@ -885,12 +926,12 @@ set(result, 'none');
 		</hotspot>
 
 		<hotspot name="incorrectoc"
-			url="images/Correctog.png" 
+			url="images/Incorrectog.png" 
 			distorted="true"
 			scale="0.06"
 			ath="28.3363107" 
 			atv="15.17445091"
-			onclick="set(hotspot[correctoc].visible, false); set(hotspot[correctoc].enable, false); ">
+			onclick="resete_astrolabio_elements2();">
 		</hotspot>
 		
 		<hotspot name="eje_parabola"
@@ -903,35 +944,35 @@ set(result, 'none');
 			onclick="">
 		</hotspot>
 
-		<hotspot name="polyP_1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="polyP_1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="reset_astrolabio_elements3();">
 			<point ath="7.208141267452504" atv="-8.735335963197478" />
 			<point ath="18.545416127264048" atv="-9.489674901278523" />
 			<point ath="18.784826936207594" atv="-3.574808180371336" />
 			<point ath="7.332847856281944" atv="-3.1507434254166657" />
 		</hotspot>
 
-		<hotspot name="polyP_2" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="polyP_2" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="reset_astrolabio_elements3();">
 			<point ath="8.957421870260475" atv="1.7136553476004035" />
 			<point ath="19.607022286185213" atv="1.4038427193543466" />
 			<point ath="19.49915543547229" atv="7.960353466002128" />
 			<point ath="9.07654915055349" atv="7.73234778881881" />
 		</hotspot>
 
-		<hotspot name="polyP_3" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="polyP_3" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="reset_astrolabio_elements3();">
 			<point ath="18.737788100737305" atv="-2.604937706413109" />
 			<point ath="19.120629920386932" atv="1.1762238712088218" />
 			<point ath="32.98853263188903" atv="1.2004624205218588" />
 			<point ath="32.55701368894154" atv="-2.6844728736650803" />
 		</hotspot>
 
-		<hotspot name="polyP_4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="show_astrolabio_elements3();">
+		<hotspot name="polyP_4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="set(hotspot[correctop].visible, true);">
 			<point ath="31.22874923417288" atv="-8.30288587932375" />
 			<point ath="44.888348655428445" atv="-7.980624024415215" />
 			<point ath="45.10926016152143" atv="-4.28310775840462" />
 			<point ath="31.520272970000747" atv="-4.567603055311634" />
 		</hotspot>
 
-		<hotspot name="polyP_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="polyP_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="reset_astrolabio_elements3();">
 			<point ath="30.458768495202833" atv="1.8785967885871744" />
 			<point ath="44.14285458372706" atv="1.6607019281838522" />
 			<point ath="44.068963862887415" atv="7.072619377963893" />
@@ -944,16 +985,16 @@ set(result, 'none');
 			scale="0.06"
 			ath="28.3363107" 
 			atv="15.17445091"
-			onclick="show_astrolabio_elements2();">
+			onclick="show_astrolabio_elements3();">
 		</hotspot>
 
 		<hotspot name="incorrectop"
-			url="images/Correctog.png" 
+			url="images/Incorrectog.png" 
 			distorted="true"
 			scale="0.06"
 			ath="28.3363107" 
 			atv="15.17445091"
-			onclick="set(hotspot[correctoc].visible, false); set(hotspot[correctoc].enabled, false); ">
+			onclick="resete_astrolabio_elements3();">
 		</hotspot>
 
 		<hotspot name="eje_elipse"
@@ -966,14 +1007,14 @@ set(result, 'none');
 			onclick="">
 		</hotspot>
 
-		<hotspot name="poliE_1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="poliE_1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="reset_astrolabio_elements4()">
 			<point ath="6.36041140611502" atv="-8.33268823191249" />
 			<point ath="19.53313597366207" atv="-8.813780091348743" />
 			<point ath="19.53313597366207" atv="-2.631506166334126" />
 			<point ath="6.542316187933409" atv="-2.530283848910253" />
 		</hotspot>
 
-		<hotspot name="poliE_2" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="poliE_2" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="reset_astrolabio_elements4()">
 			<point ath="6.724088602628285" atv="-0.8842537233585328" />
 			<point ath="19.91404577934958" atv="-1.068033336298362" />
 			<point ath="20.022542654027802" atv="2.335495160163078" />
@@ -987,14 +1028,14 @@ set(result, 'none');
 			<point ath="18.710849320471993" atv="9.76330882185071" />
 		</hotspot>
 
-		<hotspot name="poliE_4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="">
+		<hotspot name="poliE_4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="reset_astrolabio_elements4()">
 			<point ath="32.36689223847725" atv="-4.613816057542435" />
 			<point ath="45.82316292561046" atv="-4.5964693235448095" />
 			<point ath="45.83981158116728" atv="-0.6234455486260682" />
 			<point ath="32.35166854690351" atv="-0.5966414508463503" />
 		</hotspot>
 
-		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="show_astrolabio_elements4(); loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));">
+		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="show_astrolabio_elements4(); ">
 			<point ath="32.9514917531331" atv="1.7847113239700225" />
 			<point ath="45.867033296663635" atv="1.273201424326321" />
 			<point ath="46.09320421943801" atv="6.997915021013339" />
@@ -1007,16 +1048,16 @@ set(result, 'none');
 			scale="0.06"
 			ath="28.3363107" 
 			atv="15.17445091"
-			onclick="show_astrolabio_elements2();">
+			onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));">
 		</hotspot>
 
 		<hotspot name="incorrectoe"
-			url="images/Correctog.png" 
+			url="images/Incorrectog.png" 
 			distorted="true"
 			scale="0.06"
 			ath="28.3363107" 
 			atv="15.17445091"
-			onclick="set(hotspot[correctoc].visible, false); set(hotspot[correctoc].enable, false); ">
+			onclick="resete_astrolabio_elements4()">
 		</hotspot>
 	</scene>
 
