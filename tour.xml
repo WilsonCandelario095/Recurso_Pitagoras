@@ -1316,6 +1316,20 @@ set(result, 'none');
 			<cube url="panos/Tunel.tiles/vr/pano_%s.jpg" />
 		</image>
 
+		<hotspot name="Ending"
+			type="image"
+			url="images/ending.png"
+			ath="0"
+			atv="0"
+			depth="2500"
+			scale="4.0"
+			rx="0" ry="0" rz="0"
+			ox="0.0" oy="0.0"
+			tx="0" ty="0" tz="0"
+			visible="true"
+			distorted="true"
+			onclick="ocultar1();" />
+
 	</scene>
 
 
