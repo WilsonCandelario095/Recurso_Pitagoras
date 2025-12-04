@@ -305,6 +305,16 @@
 
 		set(hotspot[completado].visible, true); 
 	</action>
+
+	<action name="Cambio">
+		set(hotspot[Balanza_Respuesta_Correcta].visible, false);
+		set(hotspot[Balanza_Respuesta_Incorrecta].visible, true);
+	</action>
+
+	<action name="Cambio2">
+		set(hotspot[Balanza_Respuesta_Correcta].visible, true);
+		set(hotspot[Balanza_Respuesta_Incorrecta].visible, false);
+	</action>
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
 	    from above or optionally include one of the predefined designs from below.
@@ -1263,6 +1273,8 @@
 				 distorted="true"
 				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); "
 		/>
+
+
 
 	</scene>
 
