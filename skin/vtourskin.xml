@@ -342,7 +342,7 @@
 
 	<!-- Style para triángulo obtuso: usar solo en escenas que lo requieran -->
 	<style name="triangle_obtus_style"
-		url="triangulo_obtusangulo.svg"
+		url="obtusangulo.png"
 		distorted="true"
 		scale="1.8"
 		rotate="170"
@@ -352,7 +352,7 @@
 
 	<!-- Style para triángulo acutángulo: usar solo en escenas que lo requieran -->
 	<style name="triangle_acut_style"
-		url="triangulo_acutangulo.svg"
+		url="acutangulo.png"
 		distorted="true"
 		scale="1.8"
 		depth="1000"
@@ -410,6 +410,14 @@
     <!-- Style para el número 1 -->
     <style name="number1_style"
           url="../numeros/1.png"
+		    edge="center"
+		    scale="1.0"
+          distorted="true"
+          tooltip="" />
+
+    <!-- Style para el número 2 -->
+    <style name="number2_style"
+          url="../numeros/2.png"
 		    edge="center"
 		    scale="1.0"
           distorted="true"
