@@ -166,6 +166,7 @@
 		set(hotspot[correctoe].visible, false);
 		set(hotspot[incorrectoe].visible, false);
 
+		set(hotspot[Completado].visible, false);
 	</action>
 
 	<action name="show_astrolabio_elements1">
@@ -288,6 +289,17 @@
 		set(hotspot[poliE_5].Enabled, true);
 
 		set(hotspot[incorrectoe].visible, false);
+	</action>
+
+	<action name="CompletadoAstrolabio">
+		set(hotspot[poliE_1].visible, false);
+		set(hotspot[poliE_2].visible, false);
+		set(hotspot[poliE_3].visible, false);
+		set(hotspot[poliE_4].visible, false);
+		set(hotspot[poliE_5].visible, false);
+
+		set(hotspot[correctoe].visible, false);
+
 	</action>
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
@@ -949,7 +961,7 @@
 		</hotspot>
 		
 		<hotspot name="eje_parabola"
-			url="images/Ejercicio_Parabola.png" 
+			url="images/Ejercicio_parabola.png" 
 			distorted="true"
 			scale="0.1"
 			ath="25.9563107" 
@@ -1062,7 +1074,7 @@
 			scale="0.06"
 			ath="28.3363107" 
 			atv="15.17445091"
-			onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));">
+			onclick="set(hotspot[completado].visible, true);">
 		</hotspot>
 
 		<hotspot name="incorrectoe"
@@ -1073,6 +1085,16 @@
 			atv="15.17445091"
 			onclick="resete_astrolabio_elements4()">
 		</hotspot>
+
+		<hotspot name="completado"
+			url="images/Completado.png" 
+			distorted="true"
+			scale="0.1"
+			ath="25.9563107" 
+			atv="-4.5445091"
+			onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));">
+		</hotspot>
+
 	</scene>
 
 	<scene name="scene_Spztano" title="Sótano - Menú" onstart="hide_spztano_elements();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
