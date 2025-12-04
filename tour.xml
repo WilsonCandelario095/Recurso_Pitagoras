@@ -63,7 +63,38 @@
 	               design_text_css="color:#FFFFFF; font-family:Arial;"
 	               design_text_shadow="1"
 	               />
-	
+
+<action name="hideCounterpart">
+    if(%1 == 'obj_corona1',  set(hotspot[obj_corona2].visible, false));
+    if(%1 == 'obj_corona2',  set(hotspot[obj_corona1].visible, false));
+
+    if(%1 == 'obj_cuchara1', set(hotspot[obj_cuchara2].visible, false));
+    if(%1 == 'obj_cuchara2', set(hotspot[obj_cuchara1].visible, false));
+
+    if(%1 == 'obj_alfora1',  set(hotspot[obj_alfora2].visible, false));
+    if(%1 == 'obj_alfora2',  set(hotspot[obj_alfora1].visible, false));
+
+    if(%1 == 'obj_manzana1', set(hotspot[obj_manzana2].visible, false));
+    if(%1 == 'obj_manzana2', set(hotspot[obj_manzana1].visible, false));
+
+    if(%1 == 'obj_moneda1', set(hotspot[obj_moneda2].visible, false));
+    if(%1 == 'obj_moneda2', set(hotspot[obj_moneda1].visible, false));
+
+    if(%1 == 'obj_piedra1', set(hotspot[obj_piedra2].visible, false));
+    if(%1 == 'obj_piedra2', set(hotspot[obj_piedra1].visible, false));
+</action>
+
+<action name="hide_corona">
+    if(%1 == 'obj_corona1',
+        set(hotspot[obj_corona2].visible, false);
+        set(hotspot[obj_corona2].enabled, false);
+    );
+    if(%1 == 'obj_corona2',
+        set(hotspot[obj_corona1].visible, false);
+        set(hotspot[obj_corona1].enabled, false);
+    );
+</action>
+
 	<action name="hide_spztano_elements">
 		set(hotspot[combo_btn_1].visible, false);
 		set(hotspot[obj_sphere].visible, false);
@@ -330,51 +361,6 @@
 			set(hotspot[%1].isMoved, false);
 		);
 	]]></action>
-
-<!-- Variables de estado -->
-set(estado_izq, 'normal');
-set(estado_der, 'normal');
-set(result, 'none');
-	<!-- ACCIÓN: agregar peso a la izquierda -->
-<action name="add_left">
-    set(estado_izq, 'pesado');
-
-    if(estado_der == 'pesado',
-        set(result, 'equilibrado'),
-        set(result, 'inclinado_izq')
-    );
-
-    actualizar_mensaje();
-</action>
-
-<!-- ACCIÓN: agregar peso a la derecha -->
-<action name="add_right">
-    set(estado_der, 'pesado');
-
-    if(estado_izq == 'pesado',
-        set(result, 'equilibrado'),
-        set(result, 'inclinado_der')
-    );
-
-    actualizar_mensaje();
-</action>
-
-<!-- ACCIÓN DE ACTUALIZACIÓN DEL TEXTO -->
-<action name="actualizar_mensaje">
-    if(result == 'equilibrado',
-        layer[mensaje].text = 'La balanza simbólica ha quedado perfectamente equilibrada.',
-    );
-
-    if(result == 'inclinado_izq',
-        layer[mensaje].text = 'La balanza se inclinó hacia la izquierda. Ese lado tiene mayor carga simbólica.',
-    );
-
-    if(result == 'inclinado_der',
-        layer[mensaje].text = 'La balanza se inclinó hacia la derecha. El lado derecho tomó más carga simbólica.',
-    );
-</action>
-
-
 
 	<action name="resetSides">
     for(hs, hotspots,
@@ -1136,7 +1122,7 @@ set(result, 'none');
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left(); sumar(); txtreload(counter);"
+				onclick="moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)); set(hotspot['obj_corona2'].enabled,false);"
 		/>
 
 		<hotspot name="obj_cuchara1"
@@ -1145,7 +1131,7 @@ set(result, 'none');
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+				onclick="moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora1"
@@ -1154,7 +1140,7 @@ set(result, 'none');
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_Alfora1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+				onclick="moveMyHotspot('obj_Alfora1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_manzana1"
@@ -1163,7 +1149,7 @@ set(result, 'none');
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_manzana1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+				onclick="moveMyHotspot('obj_manzana1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_moneda1"
@@ -1172,7 +1158,7 @@ set(result, 'none');
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_moneda1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+				onclick="moveMyHotspot('obj_moneda1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_piedra1"
@@ -1181,7 +1167,7 @@ set(result, 'none');
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_piedra1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+				onclick="moveMyHotspot('obj_piedra1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<!-- BOTÓN DERECHO -->
@@ -1191,7 +1177,7 @@ set(result, 'none');
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_corona2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+				onclick="moveMyHotspot2('obj_corona2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_cuchara2"
@@ -1200,7 +1186,7 @@ set(result, 'none');
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+				onclick="moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora2"
@@ -1209,7 +1195,7 @@ set(result, 'none');
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_alfora2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+				onclick="moveMyHotspot2('obj_alfora2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_manzana2"
@@ -1218,7 +1204,7 @@ set(result, 'none');
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_manzana2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+				onclick="moveMyHotspot2('obj_manzana2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_moneda2"
@@ -1227,7 +1213,7 @@ set(result, 'none');
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_moneda2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+				onclick="moveMyHotspot2('obj_moneda2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_piedra2"
@@ -1236,7 +1222,7 @@ set(result, 'none');
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+				onclick="moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<!-- Botón de validación -->
@@ -1247,7 +1233,7 @@ set(result, 'none');
 				 atv="-35"
 				 scale="0.06"
 				 distorted="true"
-				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); validateBalance(); "
+				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); "
 		/>
 
 	</scene>
@@ -1284,7 +1270,7 @@ set(result, 'none');
 				 atv="180"
 				 rotate="180"
 				 distorted="true"
-				 visible="true"
+				 visible="false"
 				 onclick="loadscene('scene_Tunel', null, MERGE, BLEND(0.5,linear));"
 		/>		
 		
