@@ -1148,7 +1148,7 @@
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)); set(hotspot['obj_corona2'].enabled,false);"
+				onclick="moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)); "
 		/>
 
 		<hotspot name="obj_cuchara1"
@@ -1157,8 +1157,7 @@
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="set(hotspot[Balanza_Respuesta_Incorrecta].visible, true); 
-				 set(hotspot[Balanza_Respuesta_Correcta].visible, false);
+				onclick="
 				moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
@@ -1214,8 +1213,7 @@
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="set(hotspot[Balanza_Respuesta_Incorrecta].visible, true); 
-				 set(hotspot[Balanza_Respuesta_Correcta].visible, false);
+				onclick="
 				 moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
