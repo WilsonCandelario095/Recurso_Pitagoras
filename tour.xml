@@ -298,8 +298,10 @@
 		set(hotspot[poliE_4].visible, false);
 		set(hotspot[poliE_5].visible, false);
 
+		set(hotspot[eje_elipse].visible, false);
 		set(hotspot[correctoe].visible, false);
 
+		set(hotspot[completado].visible, true); 
 	</action>
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
@@ -1074,7 +1076,7 @@
 			scale="0.06"
 			ath="28.3363107" 
 			atv="15.17445091"
-			onclick="set(hotspot[completado].visible, true);">
+			onclick="completadoAstrolabio();">
 		</hotspot>
 
 		<hotspot name="incorrectoe"
@@ -1089,10 +1091,10 @@
 		<hotspot name="completado"
 			url="images/Completado.png" 
 			distorted="true"
-			scale="0.1"
+			scale="0.15"
 			ath="25.9563107" 
 			atv="-4.5445091"
-			onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));">
+			onclick=" loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));">
 		</hotspot>
 
 	</scene>
@@ -1139,7 +1141,7 @@
 		
 		<!-- BOTÓN IZQUIERDO -->
 		<hotspot name="obj_corona1"
-				 url="images/corona.png"
+				 url="images/Corona.png"
 		         ath="-25"
 		         atv="6"
 				scale="0.02"
@@ -1148,7 +1150,7 @@
 		/>
 
 		<hotspot name="obj_cuchara1"
-				 url="images/cuchara.png"
+				 url="images/Cuchara.png"
 		         ath="-25"
 		         atv="11"
 				scale="0.02"
@@ -1194,7 +1196,7 @@
 
 		<!-- BOTÓN DERECHO -->
 		<hotspot name="obj_corona2"
-				 url="images/corona.png"
+				 url="images/Corona.png"
 		         ath="25"
 		         atv="6"
 				scale="0.02"
@@ -1203,7 +1205,7 @@
 		/>
 
 		<hotspot name="obj_cuchara2"
-				 url="images/cuchara.png"
+				 url="images/Cuchara.png"
 		         ath="25"
 		         atv="11"
 				scale="0.02"
