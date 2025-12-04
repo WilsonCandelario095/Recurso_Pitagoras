@@ -113,6 +113,8 @@
 		set(hotspot[obj_piedra2].visible, false);
 
 		set(hotspot[validate_btn].visible, false);
+
+
 	</action>
 
 
@@ -1155,7 +1157,9 @@
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="set(hotspot[Balanza_Respuesta_Incorrecta].visible, true); 
+				 set(hotspot[Balanza_Respuesta_Correcta].visible, false);
+				moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora1"
@@ -1210,7 +1214,9 @@
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="set(hotspot[Balanza_Respuesta_Incorrecta].visible, true); 
+				 set(hotspot[Balanza_Respuesta_Correcta].visible, false);
+				 moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora2"
@@ -1262,7 +1268,7 @@
 
 	</scene>
 
-	<scene name="scene_Spztano_game" title="Sótano - Juego" onstart="	" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_Spztano_game" title="Sótano - Juego" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -1294,7 +1300,7 @@
 				 atv="180"
 				 rotate="180"
 				 distorted="true"
-				 visible="false"
+				 visible="true"
 				 onclick="loadscene('scene_Tunel', null, MERGE, BLEND(0.5,linear));"
 		/>		
 		
@@ -1306,6 +1312,7 @@
 				 rotate="180"
 				 distorted="true"
 				 visible="false"
+				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
 		/>
 
 	</scene>
