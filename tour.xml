@@ -63,29 +63,44 @@
 	               design_text_css="color:#FFFFFF; font-family:Arial;"
 	               design_text_shadow="1"
 	               />
-
-
 	
 	<action name="hide_spztano_elements">
 		set(hotspot[combo_btn_1].visible, false);
 		set(hotspot[obj_sphere].visible, false);
-		set(hotspot[obj_cube].visible, false);
-		set(hotspot[obj_cylinder].visible, false);
-		set(hotspot[obj_sphere2].visible, false);
-		set(hotspot[obj_cube2].visible, false);
-		set(hotspot[obj_cylinder2].visible, false);
+
+		set(hotspot[obj_manzana1].visible, false);
+		set(hotspot[obj_manzana2].visible, false);
+		set(hotspot[obj_cuchara1].visible, false);
+		set(hotspot[obj_cuchara2].visible, false);
+		set(hotspot[obj_corona1].visible, false);
+		set(hotspot[obj_corona2].visible, false);
+		set(hotspot[obj_alfora1].visible, false);
+		set(hotspot[obj_alfora2].visible, false);
+		set(hotspot[obj_moneda1].visible, false);
+		set(hotspot[obj_moneda2].visible, false);
+		set(hotspot[obj_piedra1].visible, false);
+		set(hotspot[obj_piedra2].visible, false);
+
 		set(hotspot[validate_btn].visible, false);
 	</action>
 
 
 	<action name="show_spztano_elements">
 		set(hotspot[combo_btn_1].visible, true);
-		set(hotspot[obj_sphere].visible, true);
-		set(hotspot[obj_cube].visible, true);
-		set(hotspot[obj_cylinder].visible, true);
-		set(hotspot[obj_sphere2].visible, true);
-		set(hotspot[obj_cube2].visible, true);
-		set(hotspot[obj_cylinder2].visible, true);	
+
+		set(hotspot[obj_manzana1].visible, true);
+		set(hotspot[obj_manzana2].visible, true);
+		set(hotspot[obj_cuchara1].visible, true);
+		set(hotspot[obj_cuchara2].visible, true);
+		set(hotspot[obj_corona1].visible, true);
+		set(hotspot[obj_corona2].visible, true);
+		set(hotspot[obj_alfora1].visible, true);
+		set(hotspot[obj_alfora2].visible, true);
+		set(hotspot[obj_moneda1].visible, true);
+		set(hotspot[obj_moneda2].visible, true);
+		set(hotspot[obj_piedra1].visible, true);
+		set(hotspot[obj_piedra2].visible, true);
+
 		set(hotspot[validate_btn].visible, true);
 	</action>
 
@@ -271,8 +286,8 @@
 			set(rndatv, calc(random()*6 - 1.5));
 
 			// Nueva posición base + dispersión
-			tween(hotspot[%1].ath, calc(10.90 + rndath), 0.7, easeOutQuad);
-			tween(hotspot[%1].atv, calc(0.63 + rndatv), 0.7, easeOutQuad);
+			tween(hotspot[%1].ath, calc(11.90 + rndath), 0.7, easeOutQuad);
+			tween(hotspot[%1].atv, calc(5.63 + rndatv), 0.7, easeOutQuad);
 
 			set(hotspot[%1].side, 'right');
 			set(hotspot[%1].isMoved, true);
@@ -301,8 +316,8 @@
 			set(rndatv, calc(random()*6 - 1.5));
 
 			// Nueva posición base + dispersión
-			tween(hotspot[%1].ath, calc(-11.39 + rndath), 0.7, easeOutQuad);
-			tween(hotspot[%1].atv, calc(-1 + rndatv), 0.7, easeOutQuad);
+			tween(hotspot[%1].ath, calc(-11.89 + rndath), 0.7, easeOutQuad);
+			tween(hotspot[%1].atv, calc(4.2 + rndatv), 0.7, easeOutQuad);
 
 			set(hotspot[%1].side, 'left');
 			set(hotspot[%1].isMoved, true);
@@ -1021,7 +1036,7 @@ set(result, 'none');
 			<point ath="6.905725139638264" atv="2.3458314783878498" />
 		</hotspot>
 
-		<hotspot name="poliE_3" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="show_astrolabio_elements4();">
+		<hotspot name="poliE_3" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="set(hotspot[correctoe].visible, true);">
 			<point ath="18.710849320471993" atv="3.919989968751425" />
 			<point ath="29.413120213114667" atv="3.446237702756738" />
 			<point ath="29.459698038077818" atv="9.092993398357251" />
@@ -1035,7 +1050,7 @@ set(result, 'none');
 			<point ath="32.35166854690351" atv="-0.5966414508463503" />
 		</hotspot>
 
-		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="show_astrolabio_elements4(); ">
+		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="set(hotspot[correctoe].visible, true);">
 			<point ath="32.9514917531331" atv="1.7847113239700225" />
 			<point ath="45.867033296663635" atv="1.273201424326321" />
 			<point ath="46.09320421943801" atv="6.997915021013339" />
@@ -1090,35 +1105,125 @@ set(result, 'none');
 
 		<!-- Botones de combinaciones -->
 		<hotspot name="combo_btn_1"
-				 url="images/balanza.png"
+				 url="images/Balanzaa.png"
 				 ath="180"
 				 atv="180"	
-				 scale="0.06"
+				 scale="0.01"
 				 depth="100"
 				 handcoursor="false"
 				 enabled="false"
 				 distorted="true"
 				 rotate="180"
 		/>
-
+		
 		<!-- BOTÓN IZQUIERDO -->
-		<hotspot name="obj_sphere"
-				 url="images/sphere.png"
-		         ath="-36"
+		<hotspot name="obj_corona1"
+				 url="images/corona.png"
+		         ath="-25"
 		         atv="6"
-				scale="0.2"
+				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_sphere'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+				onclick="moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left(); sumar(); txtreload(counter);"
+		/>
+
+		<hotspot name="obj_cuchara1"
+				 url="images/cuchara.png"
+		         ath="-25"
+		         atv="11"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+		/>
+
+		<hotspot name="obj_alfora1"
+				 url="images/Alfora.png"
+		         ath="-31"
+		         atv="6"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot('obj_Alfora1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+		/>
+
+		<hotspot name="obj_manzana1"
+				 url="images/Manzana.png"
+		         ath="-31"
+		         atv="11"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot('obj_manzana1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+		/>
+
+		<hotspot name="obj_moneda1"
+				 url="images/Moneda.png"
+		         ath="-37"
+		         atv="6"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot('obj_moneda1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
+		/>
+
+		<hotspot name="obj_piedra1"
+				 url="images/Piedra.png"
+		         ath="-37"
+		         atv="11"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot('obj_piedra1'); set(enabled,false); delayedcall(1, set(enabled,true)) add_left();"
 		/>
 
 		<!-- BOTÓN DERECHO -->
-		<hotspot name="obj_sphere2"
-				 url="images/sphere.png"
-		         ath="36"
+		<hotspot name="obj_corona2"
+				 url="images/corona.png"
+		         ath="25"
 		         atv="6"
-				scale="0.2"
+				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_sphere2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+				onclick="moveMyHotspot2('obj_corona2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+		/>
+
+		<hotspot name="obj_cuchara2"
+				 url="images/cuchara.png"
+		         ath="25"
+		         atv="11"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+		/>
+
+		<hotspot name="obj_alfora2"
+				 url="images/Alfora.png"
+		         ath="31"
+		         atv="6"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot2('obj_alfora2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+		/>
+
+		<hotspot name="obj_manzana2"
+				 url="images/Manzana.png"
+		         ath="31"
+		         atv="11"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot2('obj_manzana2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+		/>
+
+		<hotspot name="obj_moneda2"
+				 url="images/Moneda.png"
+		         ath="37"
+		         atv="6"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot2('obj_moneda2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
+		/>
+
+		<hotspot name="obj_piedra2"
+				 url="images/Piedra.png"
+		         ath="37"
+		         atv="11"
+				scale="0.02"
+				capture="true"
+				onclick="moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true)) add_right();"
 		/>
 
 		<!-- Botón de validación -->
@@ -1126,7 +1231,7 @@ set(result, 'none');
 		         style="skin_hotspotstyle2"
 				 url="images/checkMark.png"
 				 ath="0"
-				 atv="-25"
+				 atv="-35"
 				 scale="0.06"
 				 distorted="true"
 				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); validateBalance(); "
@@ -1167,7 +1272,7 @@ set(result, 'none');
 				 rotate="180"
 				 distorted="true"
 				 visible="true"
-				 
+				 onclick="loadscene('scene_Tunel', null, MERGE, BLEND(0.5,linear));"
 		/>		
 		
 		<hotspot name="Balanza_Respuesta_Incorrecta"
