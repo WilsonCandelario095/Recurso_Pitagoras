@@ -1265,26 +1265,26 @@
 				onclick="moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
+		<hotspot name="validate_btn2"
+				 url="images/Papiro.png"
+				 ath="0"
+				 atv="-30"
+				 scale="0.3"
+				 distorted="true"
+				 onclick="loadscene('scene_Spztano_game2', null, MERGE, BLEND(0.5,linear)); "
+		/>
+
 		<!-- Botón de validación -->
 		<hotspot name="validate_btn"
-		         style="skin_hotspotstyle2"
 				 url="images/checkMark.png"
 				 ath="0"
-				 atv="-33"
-				 scale="0.06"
+				 atv="-30"
+				 scale="0.04"
 				 distorted="true"
 				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); "
 		/>
 
-		<hotspot name="validate_btn2"
-		         style="skin_hotspotstyle2"
-				 url="images/checkMark.png"
-				 ath="0"
-				 atv="25"
-				 scale="0.06"
-				 distorted="true"
-				 onclick="loadscene('scene_Spztano_game2', null, MERGE, BLEND(0.5,linear)); "
-		/>
+
 	</scene>
 
 	<scene name="scene_Spztano_game" title="Sótano - Juego" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
