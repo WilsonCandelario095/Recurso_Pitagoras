@@ -113,6 +113,7 @@
 		set(hotspot[obj_piedra2].visible, false);
 
 		set(hotspot[validate_btn].visible, false);
+		set(hotspot[validate_btn2].visible, false);
 
 
 	</action>
@@ -135,6 +136,7 @@
 		set(hotspot[obj_piedra2].visible, true);
 
 		set(hotspot[validate_btn].visible, true);
+		set(hotspot[validate_btn2].visible, true);
 	</action>
 
 	<action name="hide_astrolabio_elements">
@@ -1268,14 +1270,21 @@
 		         style="skin_hotspotstyle2"
 				 url="images/checkMark.png"
 				 ath="0"
-				 atv="-35"
+				 atv="-33"
 				 scale="0.06"
 				 distorted="true"
 				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); "
 		/>
 
-
-
+		<hotspot name="validate_btn2"
+		         style="skin_hotspotstyle2"
+				 url="images/checkMark.png"
+				 ath="0"
+				 atv="25"
+				 scale="0.06"
+				 distorted="true"
+				 onclick="loadscene('scene_Spztano_game2', null, MERGE, BLEND(0.5,linear)); "
+		/>
 	</scene>
 
 	<scene name="scene_Spztano_game" title="Sótano - Juego" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -1322,6 +1331,56 @@
 				 rotate="180"
 				 distorted="true"
 				 visible="false"
+				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
+		/>
+
+	</scene>
+
+
+	<scene name="scene_Spztano_game2" title="Sótano - Juego" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Spztano.tiles/preview.jpg" />
+
+		<image if="!(webvr.isenabled OR device.mobilevr)">
+			<cube url="panos/Spztano.tiles/%s/l%l/%0v/l%l_%s_%0v_%0h.jpg" multires="512,768,1664,3200,6400" />
+		</image>
+
+		<image if="webvr.isenabled OR device.mobilevr">
+			<cube url="panos/Spztano.tiles/vr/pano_%s.jpg" />
+		</image>
+
+		<hotspot name="back_btn"
+		         style="skin_hotspotstyle2"
+				 url="images/backIcon.png"
+				 scale="0.06"
+				 ath="-40"
+				 atv="-25"
+				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
+		/>
+
+		<hotspot name="Balanza_Respuesta_Correcta"
+				 scale="0.2"
+				 url="images/Balanceando_Masas_Correcta.png"
+				 ath="180"
+				 atv="180"
+				 rotate="180"
+				 distorted="true"
+				 visible="false"
+				 onclick="loadscene('scene_Tunel', null, MERGE, BLEND(0.5,linear));"
+		/>		
+		
+		<hotspot name="Balanza_Respuesta_Incorrecta"
+				 scale="0.2"
+				 url="images/Balanceando_Masas_Incorrecta.png"
+				 ath="180"
+				 atv="180"
+				 rotate="180"
+				 distorted="true"
+				 visible="true"
 				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
 		/>
 
