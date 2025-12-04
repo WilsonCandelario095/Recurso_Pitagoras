@@ -1284,7 +1284,6 @@
 				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); "
 		/>
 
-
 	</scene>
 
 	<scene name="scene_Spztano_game" title="Sótano - Juego" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
