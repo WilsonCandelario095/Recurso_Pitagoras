@@ -546,7 +546,7 @@
          />
 
 		<!-- Hotspot triangular para la lira -->
-		<hotspot name="hs_lira_triangle" ath="43.9207257" atv="-4.8068989" scale="1.5" keep="false" tooltip="Lira" zoom="false" style="triangle_fixed_style"
+		<hotspot name="hs_lira_triangle" ath="43.9207257" atv="-4.8068989" scale="0.03" keep="false" tooltip="Lira" zoom="false" style="triangle_fixed_style"
 			handcursor="true" visible="false"
 			onclick="text2('Lira', 'Información sobre la lira', 400, 150);" />
 
@@ -564,11 +564,11 @@
          />
 			
 		<!-- Hotspot con la imagen del número 4 -->
-		<hotspot name="hs_number4" ath="43.1003494" atv="1.4934047" scale="0.02" keep="false" tooltip="Número 4" zoom="false" style="number4_style" enabled="false" handcursor="false" visible="false" />
+		<hotspot name="hs_number4" ath="44.0767151" atv="0.9895489" scale="0.02" keep="false" tooltip="Número 4" zoom="false" style="number4_style" enabled="false" handcursor="false" visible="false" />
 		<!-- Hotspot con la imagen del número 3 (mostrando 3 en esta escena) -->
-		<hotspot name="hs_number3" ath="37.6405137" atv="-3.8573243" scale="0.03" keep="false" tooltip="Número 3" zoom="false" style="number3_style" enabled="false" handcursor="false" visible="false" />
+		<hotspot name="hs_number3" ath="36.1857565" atv="-5.2528822" scale="0.03" keep="false" tooltip="Número 3" zoom="false" style="number3_style" enabled="false" handcursor="false" visible="false" />
 		<!-- Hotspot con la imagen subida (signo de interrogación) -->
-		<hotspot name="hs_signo" ath="45.7038165" atv="-5.8548963" scale="0.05" keep="false" tooltip="Signo" zoom="false" style="signo_style" enabled="false" handcursor="false" visible="false"/>
+		<hotspot name="hs_signo" ath="46.7525273" atv="-8.2010194" scale="0.05" keep="false" tooltip="Signo" zoom="false" style="signo_style" enabled="false" handcursor="false" visible="false"/>
 
 		<!-- Hotspot con la imagen del número 5 -->
 		<hotspot name="hs_number5" ath="33.9684689" atv="-14.5013739" scale="0.03" keep="false" tooltip="Número 5" zoom="false" style="number5_style" enabled="false" handcursor="false" visible="false" />
@@ -688,17 +688,17 @@
          />
 
 		<!-- Hotspot triangular para la lira -->
-		<hotspot name="hs_lira_triangle" ath="44.3949692" atv="-10.8421956" scale="2.5" keep="false" tooltip="Lira" zoom="false" style="triangle_fixed_style"
+		<hotspot name="hs_lira_triangle" ath="42.9771762" atv="-7.1978632" scale="0.04" keep="false" tooltip="Lira" zoom="false" style="triangle_fixed_style"
 			handcursor="false"
 			onclick="text2('Lira', 'Información sobre la lira', 400, 150);" />
 			
 		<!-- Hotspot con la imagen del número 4 -->
-		<hotspot name="hs_number4" ath="43.1003494" atv="1.4934047" scale="0.05" keep="false" tooltip="Número 4" zoom="false" style="number4_style" enabled="false" handcursor="false" />
+		<hotspot name="hs_number4" ath="41.6298006" atv="1.4505725" scale="0.04" keep="false" tooltip="Número 4" zoom="false" style="number4_style" enabled="false" handcursor="false" />
 		<!-- Hotspot con la imagen del número 3 -->
-		<hotspot name="hs_number3" ath="34.0086744" atv="-9.0708070" scale="0.05" keep="false" tooltip="Número 3" zoom="false" style="number3_style" enabled="false" handcursor="false" />
+		<hotspot name="hs_number3" ath="32.9617998" atv="-7.4775886" scale="0.04" keep="false" tooltip="Número 3" zoom="false" style="number3_style" enabled="false" handcursor="false" />
 		
 		<!-- Hotspot con la imagen del número 5 -->
-		<hotspot name="hs_number5" ath="50.2780474" atv="-12.4001799" scale="0.05" keep="false" tooltip="Número 5" zoom="false" style="number5_style" enabled="false" handcursor="false" />
+		<hotspot name="hs_number5" ath="45.7079849" atv="-12.3296544" scale="0.04" keep="false" tooltip="Número 5" zoom="false" style="number5_style" enabled="false" handcursor="false" />
 
 
 	</scene>

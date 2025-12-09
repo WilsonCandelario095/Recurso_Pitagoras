@@ -332,7 +332,7 @@
 
 	<!-- Style para el triángulo de Pitágoras: render en espacio esférico (3D), adecuado para VR -->
 	<style name="triangle_fixed_style"
-		url="triangulo_pitagoras.svg"
+		url="DePitagoras.png"
 		distorted="true"
 		scale="1.0"
 		depth="1000"
