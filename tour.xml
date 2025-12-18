@@ -395,31 +395,43 @@
         set(hotspot[hs].side, null);
     );
 	</action>
-
+	
 	<style name="estilo_contador_scene" 
-		type="text" 
-		html="Código Actual: 0" 
-		css="color:#FFFFFF; font-family:Arial; font-size:20px; text-align:center; text-shadow:2px 2px 4px #000000;"
+		type="text"
+		css="color:#FFFFFF;
+				font-family:'Cinzel', serif;
+				font-size:40px;
+				text-align:center;
+				line-height:40px;
+				letter-spacing:1px;
+				text-shadow:1px 1px 2px #000000;"
 		bg="true"
-		bgcolor="0x5588FF"
+		bgcolor="0xD4AF37"
 		bgroundedge="10"
-		zorder="10"
 	/>
 
-	<def name="codigo_secreto" type="integer" />
-	<set name="codigo_secreto" value="0" />
+	<def name="codigo_secreto"
+     type="integer"
+     value="0"
+     keep="true" />
+
 
 	<action name="actualizar_pantalla"><![CDATA[
-		trace('actualizar_pantalla - antes: ' + get(codigo_secreto));
-		set(hotspot[texto_contador].html, calc('Código Actual: [b]' + get(codigo_secreto) + '[/b]'));
-		trace('actualizar_pantalla - después: ' + get(codigo_secreto));
+		set(hotspot[texto_contador].html,
+			calc(get(codigo_secreto))
+		);
 	]]></action>
+
+
 	<action name="incrementar_contador"><![CDATA[
 		set(codigo_secreto, calc(get(codigo_secreto) + 1));
 		call(actualizar_pantalla);
-		trace('codigo_secreto incrementado: ' + get(codigo_secreto));
-		if(get(codigo_secreto) == 5, trace('¡CÓDIGO SECRETO ENCONTRADO!'););
 	]]></action>
+
+	<action name="Mostrar_Contador"><![CDATA[
+		call(actualizar_pantalla);
+	]]></action>
+
 
 	<action name="reducir_contador"><![CDATA[
 		if(get(codigo_secreto) > 0,
@@ -428,8 +440,8 @@
 		);
 	]]></action>
 
-	<events onloaded="actualizar_pantalla();" />
-	 
+	<events onloaded="delayedcall(0.2, actualizar_pantalla());" />
+
 	<layer name="creditos" url="images/creditos.png" keep="true" enabled="true" align="centercenter" x="0" y="0" visible="false" alpha="1" scale="1.3" scale.mobile="0.2" onclick="set(layer[creditos].visible,false);"/>
 	<layer name="botoncreditos" url="images/creditosboton.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.2" scale.mobile="0.2" onclick="set(layer[creditos].visible,true);"/>
 
@@ -513,7 +525,7 @@
             visible="true"
             ath="-2.9563107" atv="-19.5445091" 
             distorted="true" 
-            width="200" height="50"
+            width="50" height="50"
     />
 
  	<hotspot name="boton_incremento_fisico" 
@@ -579,7 +591,7 @@
 		<!-- Hotspot con la imagen del número 6 -->
 		<hotspot name="hs_number6" ath="52.0164816" atv="-15.0354589" scale="0.03" keep="false" tooltip="Número 6" zoom="false" style="number6_style" enabled="false" handcursor="false" visible="false" />
 		
-		<hotspot name="newhs_0" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Ir a escena" visible="false" onclick="loadscene('Pitagoras1', null, MERGE, BLEND(0.5,linear));">
+		<hotspot name="newhs_0" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Ir a escena" visible="false" onclick="incrementar_contador(); loadscene('Pitagoras1', null, MERGE, BLEND(0.5,linear));">
 			<point ath="31.17997353291066" atv="-17.713022" />
 			<point ath="31.29867512070792" atv="-11.322926" />
 			<point ath="36.70620035160909" atv="-11.383721" />
@@ -602,7 +614,7 @@
 
 	</scene>
 
-	<scene name="Pitagoras1" title="Pitagoras1" onstart="" onstop="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Capilla_2_con_lira.tiles/thumb.jpg" lat="" lng="" alt="" heading="" onloaded="actualizar_pantalla(texto_contador);" >
+	<scene name="Pitagoras1" title="Pitagoras1" onstart="" onstop="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Capilla_2_con_lira.tiles/thumb.jpg" lat="" lng="" alt="" heading="" onloaded="Mostrar_Contador()" >
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -618,22 +630,22 @@
 			<cube url="panos/Capilla_2_con_lira.tiles/vr/pano_%s.jpg" />
 		</image>
 
-	<!-- <hotspot name="texto_contador" 
+	<hotspot name="texto_contador" 
             style="estilo_contador_scene" 
             handcursor="false" 
             visible="true"
-            ath="-2.9563107" atv="-19.5445091" 
+            ath="91.1262159" atv="-20.0855790"
             distorted="true" 
             width="200" height="50"
     />
 
  	<hotspot name="boton_incremento_fisico" 
 	    url="numeros/6.png" 
-	    ath="-9.0318164" atv="1.1763250"
+	    ath="84.1598499" atv="-3.3624817"
             distorted="true" 
             width="100" height="100" 
-            onclick="incrementar_contador();"
-    /> -->
+            onclick="Mostrar_Contador();"
+    />
 
 		<hotspot name="LiraInfo" 
          url="images/LiraInfo.png" 
@@ -673,7 +685,6 @@
 		 handcursor="true"
 		 onclick="loadscene('scene_Espacio', null, MERGE, BLEND(0.5,linear));"
          />
-
 
 		<hotspot name="Papiro" 
          url="images/Papiro.png" 

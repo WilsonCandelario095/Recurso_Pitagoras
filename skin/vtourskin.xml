@@ -350,6 +350,17 @@
 		edge="center"
 		tooltip="" />
 
+	<style name="font_cinzel"
+		type="text"
+		css="
+		@font-face {
+			font-family: 'Cinzel';
+			src: url('fonts/Cinzel/static/Cinzel-Regular.ttf');
+		}
+		"
+	/>
+
+
 	<!-- Style para triángulo acutángulo: usar solo en escenas que lo requieran -->
 	<style name="triangle_acut_style"
 		url="acutangulo.png"
