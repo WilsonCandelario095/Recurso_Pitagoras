@@ -395,31 +395,43 @@
         set(hotspot[hs].side, null);
     );
 	</action>
-
+	
 	<style name="estilo_contador_scene" 
-		type="text" 
-		html="Código Actual: 0" 
-		css="color:#FFFFFF; font-family:Arial; font-size:20px; text-align:center; text-shadow:2px 2px 4px #000000;"
+		type="text"
+		css="color:#FFFFFF;
+				font-family:'Cinzel', serif;
+				font-size:40px;
+				text-align:center;
+				line-height:40px;
+				letter-spacing:1px;
+				text-shadow:1px 1px 2px #000000;"
 		bg="true"
-		bgcolor="0x5588FF"
+		bgcolor="0xD4AF37"
 		bgroundedge="10"
-		zorder="10"
 	/>
 
-	<def name="codigo_secreto" type="integer" />
-	<set name="codigo_secreto" value="0" />
+	<def name="codigo_secreto"
+     type="integer"
+     value="0"
+     keep="true" />
+
 
 	<action name="actualizar_pantalla"><![CDATA[
-		trace('actualizar_pantalla - antes: ' + get(codigo_secreto));
-		set(hotspot[texto_contador].html, calc('Código Actual: [b]' + get(codigo_secreto) + '[/b]'));
-		trace('actualizar_pantalla - después: ' + get(codigo_secreto));
+		set(hotspot[texto_contador].html,
+			calc(get(codigo_secreto))
+		);
 	]]></action>
+
+
 	<action name="incrementar_contador"><![CDATA[
 		set(codigo_secreto, calc(get(codigo_secreto) + 1));
 		call(actualizar_pantalla);
-		trace('codigo_secreto incrementado: ' + get(codigo_secreto));
-		if(get(codigo_secreto) == 5, trace('¡CÓDIGO SECRETO ENCONTRADO!'););
 	]]></action>
+
+	<action name="Mostrar_Contador"><![CDATA[
+		call(actualizar_pantalla);
+	]]></action>
+
 
 	<action name="reducir_contador"><![CDATA[
 		if(get(codigo_secreto) > 0,
@@ -428,8 +440,8 @@
 		);
 	]]></action>
 
-	<events onloaded="actualizar_pantalla();" />
-	 
+	<events onloaded="delayedcall(0.2, actualizar_pantalla());" />
+
 	<layer name="creditos" url="images/creditos.png" keep="true" enabled="true" align="centercenter" x="0" y="0" visible="false" alpha="1" scale="1.3" scale.mobile="0.2" onclick="set(layer[creditos].visible,false);"/>
 	<layer name="botoncreditos" url="images/creditosboton.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.2" scale.mobile="0.2" onclick="set(layer[creditos].visible,true);"/>
 
@@ -513,7 +525,7 @@
             visible="true"
             ath="-2.9563107" atv="-19.5445091" 
             distorted="true" 
-            width="200" height="50"
+            width="50" height="50"
     />
 
  	<hotspot name="boton_incremento_fisico" 
@@ -546,7 +558,7 @@
          />
 
 		<!-- Hotspot triangular para la lira -->
-		<hotspot name="hs_lira_triangle" ath="43.9207257" atv="-4.8068989" scale="1.5" keep="false" tooltip="Lira" zoom="false" style="triangle_fixed_style"
+		<hotspot name="hs_lira_triangle" ath="43.9207257" atv="-4.8068989" scale="0.03" keep="false" tooltip="Lira" zoom="false" style="triangle_fixed_style"
 			handcursor="true" visible="false"
 			onclick="text2('Lira', 'Información sobre la lira', 400, 150);" />
 
@@ -564,11 +576,11 @@
          />
 			
 		<!-- Hotspot con la imagen del número 4 -->
-		<hotspot name="hs_number4" ath="43.1003494" atv="1.4934047" scale="0.02" keep="false" tooltip="Número 4" zoom="false" style="number4_style" enabled="false" handcursor="false" visible="false" />
+		<hotspot name="hs_number4" ath="44.0767151" atv="0.9895489" scale="0.02" keep="false" tooltip="Número 4" zoom="false" style="number4_style" enabled="false" handcursor="false" visible="false" />
 		<!-- Hotspot con la imagen del número 3 (mostrando 3 en esta escena) -->
-		<hotspot name="hs_number3" ath="37.6405137" atv="-3.8573243" scale="0.03" keep="false" tooltip="Número 3" zoom="false" style="number3_style" enabled="false" handcursor="false" visible="false" />
+		<hotspot name="hs_number3" ath="36.1857565" atv="-5.2528822" scale="0.03" keep="false" tooltip="Número 3" zoom="false" style="number3_style" enabled="false" handcursor="false" visible="false" />
 		<!-- Hotspot con la imagen subida (signo de interrogación) -->
-		<hotspot name="hs_signo" ath="45.7038165" atv="-5.8548963" scale="0.05" keep="false" tooltip="Signo" zoom="false" style="signo_style" enabled="false" handcursor="false" visible="false"/>
+		<hotspot name="hs_signo" ath="46.7525273" atv="-8.2010194" scale="0.05" keep="false" tooltip="Signo" zoom="false" style="signo_style" enabled="false" handcursor="false" visible="false"/>
 
 		<!-- Hotspot con la imagen del número 5 -->
 		<hotspot name="hs_number5" ath="33.9684689" atv="-14.5013739" scale="0.03" keep="false" tooltip="Número 5" zoom="false" style="number5_style" enabled="false" handcursor="false" visible="false" />
@@ -579,7 +591,7 @@
 		<!-- Hotspot con la imagen del número 6 -->
 		<hotspot name="hs_number6" ath="52.0164816" atv="-15.0354589" scale="0.03" keep="false" tooltip="Número 6" zoom="false" style="number6_style" enabled="false" handcursor="false" visible="false" />
 		
-		<hotspot name="newhs_0" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Ir a escena" visible="false" onclick="loadscene('Pitagoras1', null, MERGE, BLEND(0.5,linear));">
+		<hotspot name="newhs_0" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Ir a escena" visible="false" onclick="incrementar_contador(); loadscene('Pitagoras1', null, MERGE, BLEND(0.5,linear));">
 			<point ath="31.17997353291066" atv="-17.713022" />
 			<point ath="31.29867512070792" atv="-11.322926" />
 			<point ath="36.70620035160909" atv="-11.383721" />
@@ -602,7 +614,7 @@
 
 	</scene>
 
-	<scene name="Pitagoras1" title="Pitagoras1" onstart="" onstop="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Capilla_2_con_lira.tiles/thumb.jpg" lat="" lng="" alt="" heading="" onloaded="actualizar_pantalla(texto_contador);" >
+	<scene name="Pitagoras1" title="Pitagoras1" onstart="" onstop="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Capilla_2_con_lira.tiles/thumb.jpg" lat="" lng="" alt="" heading="" onloaded="Mostrar_Contador()" >
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -617,23 +629,17 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/Capilla_2_con_lira.tiles/vr/pano_%s.jpg" />
 		</image>
+	
+	<hotspot name="hs_signo" ath="3.0355425" atv="-19.5428527" scale="0.05" keep="false" tooltip="Signo" zoom="false" style="signo_style" enabled="true" handcursor="true" visible="true" onclick="Mostrar_Contador();" />
 
-	<!-- <hotspot name="texto_contador" 
+	<hotspot name="texto_contador" 
             style="estilo_contador_scene" 
             handcursor="false" 
             visible="true"
             ath="-2.9563107" atv="-19.5445091" 
             distorted="true" 
-            width="200" height="50"
+            width="50" height="50"
     />
-
- 	<hotspot name="boton_incremento_fisico" 
-	    url="numeros/6.png" 
-	    ath="-9.0318164" atv="1.1763250"
-            distorted="true" 
-            width="100" height="100" 
-            onclick="incrementar_contador();"
-    /> -->
 
 		<hotspot name="LiraInfo" 
          url="images/LiraInfo.png" 
@@ -674,7 +680,6 @@
 		 onclick="loadscene('scene_Espacio', null, MERGE, BLEND(0.5,linear));"
          />
 
-
 		<hotspot name="Papiro" 
          url="images/Papiro.png" 
          scale="0.8" 
@@ -688,17 +693,17 @@
          />
 
 		<!-- Hotspot triangular para la lira -->
-		<hotspot name="hs_lira_triangle" ath="44.3949692" atv="-10.8421956" scale="2.5" keep="false" tooltip="Lira" zoom="false" style="triangle_fixed_style"
+		<hotspot name="hs_lira_triangle" ath="42.9771762" atv="-7.1978632" scale="0.04" keep="false" tooltip="Lira" zoom="false" style="triangle_fixed_style"
 			handcursor="false"
 			onclick="text2('Lira', 'Información sobre la lira', 400, 150);" />
 			
 		<!-- Hotspot con la imagen del número 4 -->
-		<hotspot name="hs_number4" ath="43.1003494" atv="1.4934047" scale="0.05" keep="false" tooltip="Número 4" zoom="false" style="number4_style" enabled="false" handcursor="false" />
+		<hotspot name="hs_number4" ath="41.6298006" atv="1.4505725" scale="0.04" keep="false" tooltip="Número 4" zoom="false" style="number4_style" enabled="false" handcursor="false" />
 		<!-- Hotspot con la imagen del número 3 -->
-		<hotspot name="hs_number3" ath="34.0086744" atv="-9.0708070" scale="0.05" keep="false" tooltip="Número 3" zoom="false" style="number3_style" enabled="false" handcursor="false" />
+		<hotspot name="hs_number3" ath="32.9617998" atv="-7.4775886" scale="0.04" keep="false" tooltip="Número 3" zoom="false" style="number3_style" enabled="false" handcursor="false" />
 		
 		<!-- Hotspot con la imagen del número 5 -->
-		<hotspot name="hs_number5" ath="50.2780474" atv="-12.4001799" scale="0.05" keep="false" tooltip="Número 5" zoom="false" style="number5_style" enabled="false" handcursor="false" />
+		<hotspot name="hs_number5" ath="45.7079849" atv="-12.3296544" scale="0.04" keep="false" tooltip="Número 5" zoom="false" style="number5_style" enabled="false" handcursor="false" />
 
 
 	</scene>
@@ -718,6 +723,17 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/Capilla_2_con_lira.tiles/vr/pano_%s.jpg" />
 		</image>
+
+		<hotspot name="hs_signo" ath="3.0355425" atv="-19.5428527" scale="0.05" keep="false" tooltip="Signo" zoom="false" style="signo_style" enabled="true" handcursor="true" visible="true" onclick="Mostrar_Contador();" />
+
+		<hotspot name="texto_contador" 
+				style="estilo_contador_scene" 
+				handcursor="false" 
+				visible="true"
+				ath="-2.9563107" atv="-19.5445091" 
+				distorted="true" 
+				width="50" height="50"
+		/>
 
 		<hotspot name="Incorrecto" 
          url="images/Incorrecto.png" 
@@ -775,7 +791,7 @@
 		<!-- Hotspot con la imagen del número 6 -->
 		<hotspot name="hs_number6" ath="52.0164816" atv="-15.0354589" scale="0.03" keep="false" tooltip="Número 6" zoom="false" style="number6_style" enabled="false" handcursor="false" />
 
-		<hotspot name="newhs_1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Ir a escena" onclick="loadscene('Pitagoras1', null, MERGE, BLEND(0.5,linear));">
+		<hotspot name="newhs_1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Ir a escena" onclick="incrementar_contador(); loadscene('Pitagoras1', null, MERGE, BLEND(0.5,linear));">
 			<point ath="40.20698613654798" atv="-17.677825" />
 			<point ath="40.275453074134584" atv="-11.505468" />
 			<point ath="46.46860395833505" atv="-11.615347" />
@@ -806,6 +822,17 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/Capilla_2_con_lira.tiles/vr/pano_%s.jpg" />
 		</image>
+		
+		<hotspot name="hs_signo" ath="3.0355425" atv="-19.5428527" scale="0.05" keep="false" tooltip="Signo" zoom="false" style="signo_style" enabled="true" handcursor="true" visible="true" onclick="Mostrar_Contador();" />
+
+		<hotspot name="texto_contador" 
+				style="estilo_contador_scene" 
+				handcursor="false" 
+				visible="true"
+				ath="-2.9563107" atv="-19.5445091" 
+				distorted="true" 
+				width="50" height="50"
+		/>
 
 		<hotspot name="Incorrecto" 
          url="images/Incorrecto.png" 
@@ -863,7 +890,7 @@
 		<!-- Hotspot con la imagen del número 2 -->
 		<hotspot name="hs_number2" ath="52.0164816" atv="-15.0354589" scale="0.03" keep="false" tooltip="Número 2" zoom="false" style="number2_style" enabled="false" handcursor="false" />
 
-		<hotspot name="newhs_1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Ir a escena" onclick="loadscene('Pitagoras1', null, MERGE, BLEND(0.5,linear));">
+		<hotspot name="newhs_1" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Ir a escena" onclick="incrementar_contador(); loadscene('Pitagoras1', null, MERGE, BLEND(0.5,linear));">
 			<point ath="40.20698613654798" atv="-17.677825" />
 			<point ath="40.275453074134584" atv="-11.505468" />
 			<point ath="46.46860395833505" atv="-11.615347" />
@@ -894,6 +921,17 @@
 		<image if="webvr.isenabled OR device.mobilevr">
 			<cube url="panos/Espacio.tiles/vr/pano_%s.jpg" />
 		</image>
+
+		<hotspot name="hs_signo" ath="3.0355425" atv="-19.5428527" scale="0.05" keep="false" tooltip="Signo" zoom="false" style="signo_style" enabled="true" handcursor="true" visible="true" onclick="Mostrar_Contador();" />
+
+		<hotspot name="texto_contador" 
+				style="estilo_contador_scene" 
+				handcursor="false" 
+				visible="true"
+				ath="-2.9563107" atv="-19.5445091" 
+				distorted="true" 
+				width="50" height="50"
+		/>
 
 		<hotspot name="cartel_Inicio"
 			url="images/El_astrolabio.png"
@@ -944,7 +982,7 @@
 			<point ath="7.689678377947416" atv="3.077992191195081" />
 		</hotspot>
 
-		<hotspot name="poly_r4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la parábola" onclick="set(hotspot[correctoc].visible, true);">
+		<hotspot name="poly_r4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la parábola" onclick="incrementar_contador(); set(hotspot[correctoc].visible, true);">
 			<point ath="30.45937952372543" atv="-0.7618300419460635" />
 			<point ath="43.48095783550434" atv="-1.0414479551907647" />
 			<point ath="43.642420852445355" atv="2.6645726284895166" />
@@ -1007,7 +1045,7 @@
 			<point ath="32.55701368894154" atv="-2.6844728736650803" />
 		</hotspot>
 
-		<hotspot name="polyP_4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="set(hotspot[correctop].visible, true);">
+		<hotspot name="polyP_4" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="incrementar_contador(); set(hotspot[correctop].visible, true);">
 			<point ath="31.22874923417288" atv="-8.30288587932375" />
 			<point ath="44.888348655428445" atv="-7.980624024415215" />
 			<point ath="45.10926016152143" atv="-4.28310775840462" />
@@ -1063,7 +1101,7 @@
 			<point ath="6.905725139638264" atv="2.3458314783878498" />
 		</hotspot>
 
-		<hotspot name="poliE_3" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="set(hotspot[correctoe].visible, true);">
+		<hotspot name="poliE_3" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="incrementar_contador(); set(hotspot[correctoe].visible, true);">
 			<point ath="18.710849320471993" atv="3.919989968751425" />
 			<point ath="29.413120213114667" atv="3.446237702756738" />
 			<point ath="29.459698038077818" atv="9.092993398357251" />
@@ -1077,7 +1115,7 @@
 			<point ath="32.35166854690351" atv="-0.5966414508463503" />
 		</hotspot>
 
-		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="set(hotspot[correctoe].visible, true);">
+		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="incrementar_contador(); set(hotspot[correctoe].visible, true);">
 			<point ath="32.9514917531331" atv="1.7847113239700225" />
 			<point ath="45.867033296663635" atv="1.273201424326321" />
 			<point ath="46.09320421943801" atv="6.997915021013339" />
