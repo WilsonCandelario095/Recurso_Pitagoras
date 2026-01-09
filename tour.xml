@@ -115,7 +115,33 @@
 		set(hotspot[validate_btn].visible, false);
 		set(hotspot[validate_btn2].visible, false);
 
+		set(hotspot[cartel_Inicio].visible, true);
+		set(hotspot[back_btn].visible, false);
+		set(hotspot[Balanza_Respuesta_Correcta].visible, false);
+		set(hotspot[Balanza_Respuesta_Incorrecta].visible, false);
 
+	</action>
+
+
+	<action name="hide_spztano_elements2">
+		set(hotspot[combo_btn_1].visible, false);
+		set(hotspot[obj_sphere].visible, false);
+
+		set(hotspot[obj_manzana1].visible, false);
+		set(hotspot[obj_manzana2].visible, false);
+		set(hotspot[obj_cuchara1].visible, false);
+		set(hotspot[obj_cuchara2].visible, false);
+		set(hotspot[obj_corona1].visible, false);
+		set(hotspot[obj_corona2].visible, false);
+		set(hotspot[obj_alfora1].visible, false);
+		set(hotspot[obj_alfora2].visible, false);
+		set(hotspot[obj_moneda1].visible, false);
+		set(hotspot[obj_moneda2].visible, false);
+		set(hotspot[obj_piedra1].visible, false);
+		set(hotspot[obj_piedra2].visible, false);
+
+		set(hotspot[validate_btn].visible, false);
+		set(hotspot[validate_btn2].visible, false);
 	</action>
 
 
@@ -395,6 +421,50 @@
         set(hotspot[hs].side, null);
     );
 	</action>
+
+	<action name="init_weights">
+		set(weight.corona,3);
+		set(weight.cuchara,1);
+		set(weight.alfora,2);
+		set(weight.manzana,2);
+		set(weight.moneda,1);
+		set(weight.piedra,4);
+	</action>
+
+	<action name="reset_balance">
+		set(balance.left,0);
+		set(balance.right,0);
+	</action>
+
+	<action name="place_left">
+		sub(balance.right, weight[%1]);
+		add(balance.left,  weight[%1]);
+	</action>
+
+	<action name="place_right">
+		sub(balance.left,  weight[%1]);
+		add(balance.right, weight[%1]);
+	</action>
+
+	<action name="check_balance">
+		if(balance.left EQ balance.right,
+			show_correct();
+		,
+			show_incorrect();
+		);
+	</action>
+
+	<action name="show_correct">
+		hide_spztano_elements2();
+		set(hotspot[Balanza_Respuesta_Correcta].visible,true);
+	</action>
+
+	<action name="show_incorrect">
+		hide_spztano_elements2();
+		set(hotspot[Balanza_Respuesta_Incorrecta].visible,true);
+		set(hotspot[back_btn].visible,true);
+	</action>
+
 
 	<style name="estilo_contador_scene" 
 		type="text" 
@@ -1160,7 +1230,7 @@
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)); "
+				onclick="place_left('obj_corona1'); moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)); "
 		/>
 
 		<hotspot name="obj_cuchara1"
@@ -1170,7 +1240,7 @@
 				scale="0.02"
 				capture="true"
 				onclick="
-				moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				place_left('obj_cuchara1'); moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora1"
@@ -1179,7 +1249,7 @@
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_Alfora1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="place_left('obj_alfora1'); moveMyHotspot('obj_alfora1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_manzana1"
@@ -1188,7 +1258,7 @@
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_manzana1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="place_left('obj_manzana1'); moveMyHotspot('obj_manzana1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_moneda1"
@@ -1197,7 +1267,7 @@
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_moneda1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="place_left('obj_moneda1'); moveMyHotspot('obj_moneda1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_piedra1"
@@ -1206,7 +1276,7 @@
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot('obj_piedra1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="place_left('obj_piedra1'); moveMyHotspot('obj_piedra1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<!-- BOTÓN DERECHO -->
@@ -1216,7 +1286,7 @@
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_corona2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="place_right('obj_corona2'); moveMyHotspot2('obj_corona2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_cuchara2"
@@ -1226,7 +1296,7 @@
 				scale="0.02"
 				capture="true"
 				onclick="
-				 moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				place_right('obj_cuchara2'); moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora2"
@@ -1235,7 +1305,7 @@
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_alfora2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="place_right('obj_alfora2'); moveMyHotspot2('obj_alfora2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_manzana2"
@@ -1244,7 +1314,7 @@
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_manzana2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="place_right('obj_manzana2'); moveMyHotspot2('obj_manzana2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_moneda2"
@@ -1253,7 +1323,7 @@
 		         atv="6"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_moneda2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="place_right('obj_moneda2'); moveMyHotspot2('obj_moneda2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_piedra2"
@@ -1262,46 +1332,29 @@
 		         atv="11"
 				scale="0.02"
 				capture="true"
-				onclick="moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="place_right('obj_piedra2'); moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
+		<!-- Botón de validación -->
 		<hotspot name="validate_btn2"
 				 url="images/Papiro.png"
 				 ath="0"
 				 atv="-30"
 				 scale="0.3"
 				 distorted="true"
-				 onclick="loadscene('scene_Spztano_game2', null, MERGE, BLEND(0.5,linear)); "
+				 onclick="check_balance();"
 		/>
 
-		<!-- Botón de validación -->
 		<hotspot name="validate_btn"
 				 url="images/checkMark.png"
 				 ath="0"
 				 atv="-30"
 				 scale="0.04"
 				 distorted="true"
-				 onclick="loadscene('scene_Spztano_game', null, MERGE, BLEND(0.5,linear)); "
+				 onclick="check_balance();"
 		/>
 
-	</scene>
-
-	<scene name="scene_Spztano_game" title="Sótano - Juego" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/Spztano.tiles/preview.jpg" />
-
-		<image if="!(webvr.isenabled OR device.mobilevr)">
-			<cube url="panos/Spztano.tiles/%s/l%l/%0v/l%l_%s_%0v_%0h.jpg" multires="512,768,1664,3200,6400" />
-		</image>
-
-		<image if="webvr.isenabled OR device.mobilevr">
-			<cube url="panos/Spztano.tiles/vr/pano_%s.jpg" />
-		</image>
-
+		<!-- Botón de volver -->
 		<hotspot name="back_btn"
 		         style="skin_hotspotstyle2"
 				 url="images/backIcon.png"
@@ -1311,6 +1364,7 @@
 				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
 		/>
 
+		<!-- Hotspots de respuesta correcta e incorrecta -->
 		<hotspot name="Balanza_Respuesta_Correcta"
 				 scale="0.2"
 				 url="images/Balanceando_Masas_Correcta.png"
@@ -1332,57 +1386,6 @@
 				 visible="false"
 				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
 		/>
-
-	</scene>
-
-
-	<scene name="scene_Spztano_game2" title="Sótano - Juego" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/Spztano.tiles/preview.jpg" />
-
-		<image if="!(webvr.isenabled OR device.mobilevr)">
-			<cube url="panos/Spztano.tiles/%s/l%l/%0v/l%l_%s_%0v_%0h.jpg" multires="512,768,1664,3200,6400" />
-		</image>
-
-		<image if="webvr.isenabled OR device.mobilevr">
-			<cube url="panos/Spztano.tiles/vr/pano_%s.jpg" />
-		</image>
-
-		<hotspot name="back_btn"
-		         style="skin_hotspotstyle2"
-				 url="images/backIcon.png"
-				 scale="0.06"
-				 ath="-40"
-				 atv="-25"
-				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
-		/>
-
-		<hotspot name="Balanza_Respuesta_Correcta"
-				 scale="0.2"
-				 url="images/Balanceando_Masas_Correcta.png"
-				 ath="180"
-				 atv="180"
-				 rotate="180"
-				 distorted="true"
-				 visible="false"
-				 onclick="loadscene('scene_Tunel', null, MERGE, BLEND(0.5,linear));"
-		/>		
-		
-		<hotspot name="Balanza_Respuesta_Incorrecta"
-				 scale="0.2"
-				 url="images/Balanceando_Masas_Incorrecta.png"
-				 ath="180"
-				 atv="180"
-				 rotate="180"
-				 distorted="true"
-				 visible="true"
-				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
-		/>
-
 	</scene>
 
 	<scene name="scene_Tunel" title="Tunel" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Tunel.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
