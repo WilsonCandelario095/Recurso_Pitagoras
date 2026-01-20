@@ -312,6 +312,24 @@
 		set(hotspot[Balanza_Respuesta_Correcta].visible, true);
 		set(hotspot[Balanza_Respuesta_Incorrecta].visible, false);
 	</action>
+
+	<action name="ocultarf1">
+		set(hotspot[Ending].visible, false);
+		set(hotspot[Papiro_1].visible, false);
+		set(hotspot[Papiro_2].visible, true);
+		set(hotspot[Papiro_3].visible, true);
+		set(hotspot[Papiro_4].visible, true);
+	</action>
+
+	<action name="iniciof">
+		set(hotspot[Ending].visible, false);
+		set(hotspot[Papiro_1].visible, true);
+		set(hotspot[Papiro_2].visible, false);
+		set(hotspot[Papiro_3].visible, false);
+		set(hotspot[Papiro_4].visible, false);
+
+	</action>
+
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
 	    from above or optionally include one of the predefined designs from below.
@@ -470,7 +488,7 @@
 	</action>
 
 	<action name="check_balance">
-		if(peso_izq == peso_der,
+		if(peso_izq == peso_der != 0,
 			set(hotspot[Balanza_Respuesta_Correcta].visible, true);
 			set(hotspot[Balanza_Respuesta_Incorrecta].visible, false);
 		,
@@ -1382,7 +1400,7 @@
 		/>
 	</scene>
 
-	<scene name="scene_Tunel" title="Tunel" onstart="" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Tunel.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_Tunel" title="Tunel" onstart="iniciof();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Tunel.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -1398,6 +1416,7 @@
 			<cube url="panos/Tunel.tiles/vr/pano_%s.jpg" />
 		</image>
 
+
 		<hotspot name="Ending"
 			type="image"
 			url="images/ending.png"
@@ -1410,8 +1429,63 @@
 			tx="0" ty="0" tz="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultar1();" />
+			onclick="ocultarf2();" />
+		
+			<hotspot name="Papiro_1"
+			type="image"
+			url="images/Papiro.png"
+			ath="0"
+			atv="0"
+			depth="2500"
+			scale="4.0"
+			rx="0" ry="0" rz="0"
+			ox="0.0" oy="0.0"
+			tx="0" ty="0" tz="0"
+			visible="true"
+			distorted="true"
+			onclick="ocultarf1();" />
 
+			<hotspot name="Papiro_2"
+			type="image"
+			url="images/Papiro.png"
+			ath="-40"
+			atv="0"
+			depth="2500"
+			scale="2.0"
+			rx="0" ry="0" rz="0"
+			ox="0.0" oy="0.0"
+			tx="0" ty="0" tz="0"
+			visible="true"
+			distorted="true"
+			onclick="ocultarf1();" />
+
+			<hotspot name="Papiro_3"
+			type="image"
+			url="images/Papiro.png"
+			ath="40"
+			atv="0"
+			depth="2500"
+			scale="2.0"
+			rx="0" ry="0" rz="0"
+			ox="0.0" oy="0.0"
+			tx="0" ty="0" tz="0"
+			visible="true"
+			distorted="true"
+			onclick="ocultarf1();" />
+
+			<hotspot name="Papiro_4"
+			type="image"
+			url="images/Papiro.png"
+			ath="0"
+			atv="0"
+			depth="2500"
+			scale="2.0"
+			rx="0" ry="0" rz="0"
+			ox="0.0" oy="0.0"
+			tx="0" ty="0" tz="0"
+			visible="true"
+			distorted="true"
+			onclick="ocultarf1();" />
 	</scene>
 
 
