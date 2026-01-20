@@ -64,37 +64,6 @@
 	               design_text_shadow="1"
 	               />
 
-<action name="hideCounterpart">
-    if(%1 == 'obj_corona1',  set(hotspot[obj_corona2].visible, false));
-    if(%1 == 'obj_corona2',  set(hotspot[obj_corona1].visible, false));
-
-    if(%1 == 'obj_cuchara1', set(hotspot[obj_cuchara2].visible, false));
-    if(%1 == 'obj_cuchara2', set(hotspot[obj_cuchara1].visible, false));
-
-    if(%1 == 'obj_alfora1',  set(hotspot[obj_alfora2].visible, false));
-    if(%1 == 'obj_alfora2',  set(hotspot[obj_alfora1].visible, false));
-
-    if(%1 == 'obj_manzana1', set(hotspot[obj_manzana2].visible, false));
-    if(%1 == 'obj_manzana2', set(hotspot[obj_manzana1].visible, false));
-
-    if(%1 == 'obj_moneda1', set(hotspot[obj_moneda2].visible, false));
-    if(%1 == 'obj_moneda2', set(hotspot[obj_moneda1].visible, false));
-
-    if(%1 == 'obj_piedra1', set(hotspot[obj_piedra2].visible, false));
-    if(%1 == 'obj_piedra2', set(hotspot[obj_piedra1].visible, false));
-</action>
-
-<action name="hide_corona">
-    if(%1 == 'obj_corona1',
-        set(hotspot[obj_corona2].visible, false);
-        set(hotspot[obj_corona2].enabled, false);
-    );
-    if(%1 == 'obj_corona2',
-        set(hotspot[obj_corona1].visible, false);
-        set(hotspot[obj_corona1].enabled, false);
-    );
-</action>
-
 	<action name="hide_spztano_elements">
 		set(hotspot[combo_btn_1].visible, false);
 		set(hotspot[obj_sphere].visible, false);
@@ -359,62 +328,116 @@
 		trace("Demo action executed.");
 	</action> -->
 	
-	<action name="moveMyHotspot2"><![CDATA[
-		if(!hotspot[%1].isMoved,
-
-			// Guardar posición original
-			set(hotspot[%1].orig_ath, get(hotspot[%1].ath));
-			set(hotspot[%1].orig_atv, get(hotspot[%1].atv));
-
-			// Crear offset aleatorio (-3 a +3 grados)
-			set(rndath, calc(random()*6 - 1.5));
-			set(rndatv, calc(random()*6 - 1.5));
-
-			// Nueva posición base + dispersión
-			tween(hotspot[%1].ath, calc(11.90 + rndath), 0.7, easeOutQuad);
-			tween(hotspot[%1].atv, calc(5.63 + rndatv), 0.7, easeOutQuad);
-
-			set(hotspot[%1].side, 'right');
-			set(hotspot[%1].isMoved, true);
-		,
-			// Regresar al origen guardado
-			tween(hotspot[%1].ath, get(hotspot[%1].orig_ath), 0.7, easeOutQuad);
-			tween(hotspot[%1].atv, get(hotspot[%1].orig_atv), 0.7, easeOutQuad);
-
-			set(hotspot[%1].side, null);	
-			set(hotspot[%1].isMoved, false);
-		);
-	]]></action>
+	<action name="init_counters">
+		set(peso_izq, 0);
+		set(peso_der, 0);
+	</action>
 
 	<action name="moveMyHotspot"><![CDATA[
-	js(console.log('Peso asignado: ' + %1));
-	js(console.log('peso_izq ahora vale: ' + peso_izq));
-
 		if(!hotspot[%1].isMoved,
 
 			// Guardar posición original
 			set(hotspot[%1].orig_ath, get(hotspot[%1].ath));
 			set(hotspot[%1].orig_atv, get(hotspot[%1].atv));
 
-			// Crear offset aleatorio (-3 a +3 grados)
 			set(rndath, calc(random()*6 - 1.5));
 			set(rndatv, calc(random()*6 - 1.5));
 
-			// Nueva posición base + dispersión
 			tween(hotspot[%1].ath, calc(-11.89 + rndath), 0.7, easeOutQuad);
 			tween(hotspot[%1].atv, calc(4.2 + rndatv), 0.7, easeOutQuad);
 
+			add(peso_izq, hotspot[%1].weight);
+
 			set(hotspot[%1].side, 'left');
 			set(hotspot[%1].isMoved, true);
+			toggle_counterpart(%1, false);
 		,
-			// Regresar al origen guardado
+			// REGRESAR AL ORIGEN
 			tween(hotspot[%1].ath, get(hotspot[%1].orig_ath), 0.7, easeOutQuad);
 			tween(hotspot[%1].atv, get(hotspot[%1].orig_atv), 0.7, easeOutQuad);
 
+			sub(peso_izq, hotspot[%1].weight);
+
 			set(hotspot[%1].side, null);
 			set(hotspot[%1].isMoved, false);
+			toggle_counterpart(%1, true);
 		);
+
 	]]></action>
+
+	<action name="moveMyHotspot2"><![CDATA[
+		if(!hotspot[%1].isMoved,
+
+			set(hotspot[%1].orig_ath, get(hotspot[%1].ath));
+			set(hotspot[%1].orig_atv, get(hotspot[%1].atv));
+
+			set(rndath, calc(random()*6 - 1.5));
+			set(rndatv, calc(random()*6 - 1.5));
+
+			tween(hotspot[%1].ath, calc(11.90 + rndath), 0.7, easeOutQuad);
+			tween(hotspot[%1].atv, calc(5.63 + rndatv), 0.7, easeOutQuad);
+
+			add(peso_der, hotspot[%1].weight);
+
+			set(hotspot[%1].side, 'right');
+			set(hotspot[%1].isMoved, true);
+			toggle_counterpart(%1, false);
+		,
+			tween(hotspot[%1].ath, get(hotspot[%1].orig_ath), 0.7, easeOutQuad);
+			tween(hotspot[%1].atv, get(hotspot[%1].orig_atv), 0.7, easeOutQuad);
+
+			sub(peso_der, hotspot[%1].weight);
+
+			set(hotspot[%1].side, null);
+			set(hotspot[%1].isMoved, false);
+			toggle_counterpart(%1, true);
+		);
+
+	]]></action>
+
+	<action name="toggle_counterpart">
+		if(%1 == 'obj_corona1',
+			set(hotspot[obj_corona2].enabled, %2);
+		);
+		if(%1 == 'obj_corona2',
+			set(hotspot[obj_corona1].enabled, %2);
+		);
+
+		if(%1 == 'obj_cuchara1',
+			set(hotspot[obj_cuchara2].enabled, %2);
+		);
+		if(%1 == 'obj_cuchara2',
+			set(hotspot[obj_cuchara1].enabled, %2);
+		);
+
+		if(%1 == 'obj_alfora1',
+			set(hotspot[obj_alfora2].enabled, %2);
+		);
+		if(%1 == 'obj_alfora2',
+			set(hotspot[obj_alfora1].enabled, %2);
+		);
+
+		if(%1 == 'obj_manzana1',
+			set(hotspot[obj_manzana2].enabled, %2);
+		);
+		if(%1 == 'obj_manzana2',
+			set(hotspot[obj_manzana1].enabled, %2);
+		);
+
+		if(%1 == 'obj_moneda1',
+			set(hotspot[obj_moneda2].enabled, %2);
+		);
+		if(%1 == 'obj_moneda2',
+			set(hotspot[obj_moneda1].enabled, %2);
+		);
+
+		if(%1 == 'obj_piedra1',
+			set(hotspot[obj_piedra2].enabled, %2);
+		);
+		if(%1 == 'obj_piedra2',
+			set(hotspot[obj_piedra1].enabled, %2);
+		);
+	</action>
 
 	<action name="resetSides">
     for(hs, hotspots,
@@ -447,10 +470,12 @@
 	</action>
 
 	<action name="check_balance">
-		if(balance.left EQ balance.right,
-			show_correct();
+		if(peso_izq == peso_der,
+			set(hotspot[Balanza_Respuesta_Correcta].visible, true);
+			set(hotspot[Balanza_Respuesta_Incorrecta].visible, false);
 		,
-			show_incorrect();
+			set(hotspot[Balanza_Respuesta_Correcta].visible, false);
+			set(hotspot[Balanza_Respuesta_Incorrecta].visible, true);
 		);
 	</action>
 
@@ -1140,7 +1165,7 @@
 
 	</scene>
 
-	<scene name="scene_Spztano" title="Sótano - Menú" onstart="hide_spztano_elements();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_Spztano" title="Sótano - Menú" onstart="init_counters(); hide_spztano_elements();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Spztano.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -1182,112 +1207,124 @@
 		
 		<!-- BOTÓN IZQUIERDO -->
 		<hotspot name="obj_corona1"
-				 url="images/Corona.png"
-		         ath="-25"
-		         atv="6"
+				url="images/Corona.png"
+		        ath="-25"
+		        atv="6"
 				scale="0.02"
+				weight="4"
 				capture="true"
 				onclick="place_left('obj_corona1'); moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)); "
 		/>
 
 		<hotspot name="obj_cuchara1"
-				 url="images/Cuchara.png"
-		         ath="-25"
-		         atv="11"
+				url="images/Cuchara.png"
+		        ath="-25"
+		        atv="11"
 				scale="0.02"
+				weight="2"
 				capture="true"
 				onclick="
 				place_left('obj_cuchara1'); moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora1"
-				 url="images/Alfora.png"
-		         ath="-31"
-		         atv="6"
+				url="images/Alfora.png"
+		        ath="-31"
+		        atv="6"
 				scale="0.02"
+				weight="6"
 				capture="true"
 				onclick="place_left('obj_alfora1'); moveMyHotspot('obj_alfora1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_manzana1"
-				 url="images/Manzana.png"
-		         ath="-31"
-		         atv="11"
+				url="images/Manzana.png"
+		        ath="-31"
+		        atv="11"
 				scale="0.02"
+				weight="3"
 				capture="true"
 				onclick="place_left('obj_manzana1'); moveMyHotspot('obj_manzana1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_moneda1"
-				 url="images/Moneda.png"
-		         ath="-37"
-		         atv="6"
+				url="images/Moneda.png"
+		        ath="-37"
+		        atv="6"
 				scale="0.02"
+				weight="1"
 				capture="true"
 				onclick="place_left('obj_moneda1'); moveMyHotspot('obj_moneda1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_piedra1"
-				 url="images/Piedra.png"
-		         ath="-37"
-		         atv="11"
+				url="images/Piedra.png"
+		        ath="-37"
+		        atv="11"
 				scale="0.02"
+				weight="5"
 				capture="true"
 				onclick="place_left('obj_piedra1'); moveMyHotspot('obj_piedra1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<!-- BOTÓN DERECHO -->
 		<hotspot name="obj_corona2"
-				 url="images/Corona.png"
-		         ath="25"
-		         atv="6"
+				url="images/Corona.png"
+		        ath="25"
+		        atv="6"
 				scale="0.02"
+				weight="4"
 				capture="true"
 				onclick="place_right('obj_corona2'); moveMyHotspot2('obj_corona2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_cuchara2"
-				 url="images/Cuchara.png"
-		         ath="25"
-		         atv="11"
+				url="images/Cuchara.png"
+		        ath="25"
+		        atv="11"
 				scale="0.02"
+				weight="2"
 				capture="true"
 				onclick="
 				place_right('obj_cuchara2'); moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora2"
-				 url="images/Alfora.png"
-		         ath="31"
-		         atv="6"
+				url="images/Alfora.png"
+		        ath="31"
+		        atv="6"
 				scale="0.02"
+				weight="6"
 				capture="true"
 				onclick="place_right('obj_alfora2'); moveMyHotspot2('obj_alfora2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_manzana2"
-				 url="images/Manzana.png"
-		         ath="31"
-		         atv="11"
+				url="images/Manzana.png"
+		        ath="31"
+		        atv="11"
 				scale="0.02"
+				weight="3"
 				capture="true"
 				onclick="place_right('obj_manzana2'); moveMyHotspot2('obj_manzana2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_moneda2"
-				 url="images/Moneda.png"
-		         ath="37"
-		         atv="6"
+				url="images/Moneda.png"
+		        ath="37"
+		        atv="6"
 				scale="0.02"
+				weight="1"
 				capture="true"
 				onclick="place_right('obj_moneda2'); moveMyHotspot2('obj_moneda2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_piedra2"
-				 url="images/Piedra.png"
-		         ath="37"
-		         atv="11"
+				url="images/Piedra.png"
+		        ath="37"
+		        atv="11"
 				scale="0.02"
+				weight="5"
 				capture="true"
 				onclick="place_right('obj_piedra2'); moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
