@@ -67,6 +67,7 @@
 	<action name="hide_spztano_elements">
 		set(hotspot[combo_btn_1].visible, false);
 		set(hotspot[obj_sphere].visible, false);
+		set(hotspot[btn_continuar].visible, false);
 
 		set(hotspot[obj_manzana1].visible, false);
 		set(hotspot[obj_manzana2].visible, false);
@@ -84,6 +85,7 @@
 		set(hotspot[validate_btn].visible, false);
 		set(hotspot[validate_btn2].visible, false);
 
+		set(hotspot[pista].visible, false);
 		set(hotspot[cartel_Inicio].visible, true);
 		set(hotspot[back_btn].visible, false);
 		set(hotspot[Balanza_Respuesta_Correcta].visible, false);
@@ -95,6 +97,7 @@
 	<action name="hide_spztano_elements2">
 		set(hotspot[combo_btn_1].visible, false);
 		set(hotspot[obj_sphere].visible, false);
+		set(hotspot[btn_continuar].visible, false);
 
 		set(hotspot[obj_manzana1].visible, false);
 		set(hotspot[obj_manzana2].visible, false);
@@ -109,6 +112,7 @@
 		set(hotspot[obj_piedra1].visible, false);
 		set(hotspot[obj_piedra2].visible, false);
 
+		set(hotspot[pista].visible, false);
 		set(hotspot[validate_btn].visible, false);
 		set(hotspot[validate_btn2].visible, false);
 	</action>
@@ -116,6 +120,7 @@
 
 	<action name="show_spztano_elements">
 		set(hotspot[combo_btn_1].visible, true);
+		set(hotspot[btn_continuar].visible, true);
 
 		set(hotspot[obj_manzana1].visible, true);
 		set(hotspot[obj_manzana2].visible, true);
@@ -319,23 +324,38 @@
 		set(hotspot[Balanza_Respuesta_Incorrecta].visible, false);
 	</action>
 
+	<action name="ocultarf0">
+		set(hotspot[Papiro_1].visible, true);
+		set(hotspot[Papiro_0].visible, false);
+	</action>
+
 	<action name="ocultarf1">
 		set(hotspot[Ending].visible, false);
 		set(hotspot[Papiro_1].visible, false);
 		set(hotspot[Papiro_2].visible, true);
 		set(hotspot[Papiro_3].visible, true);
 		set(hotspot[Papiro_4].visible, true);
+		set(hotspot[btn_comprobar].visible, true);
 	</action>
 
 	<action name="iniciof">
 		set(hotspot[Ending].visible, false);
-		set(hotspot[Papiro_1].visible, true);
+		set(hotspot[Papiro_1].visible, false);
 		set(hotspot[Papiro_2].visible, false);
 		set(hotspot[Papiro_3].visible, false);
 		set(hotspot[Papiro_4].visible, false);
-
+		set(hotspot[btn_comprobar].visible, false);
 	</action>
 
+	<action name="iniciof2">
+		set(hotspot[Papiro_0].visible, false);
+		set(hotspot[Papiro_1].visible, false);
+		set(hotspot[Papiro_2].visible, false);
+		set(hotspot[Papiro_3].visible, false);
+		set(hotspot[Papiro_4].visible, false);
+		set(hotspot[btn_comprobar].visible, false);
+		set(hotspot[Ending].visible, true);
+	</action>
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
 	    from above or optionally include one of the predefined designs from below.
@@ -463,38 +483,8 @@
 		);
 	</action>
 
-	<action name="resetSides">
-    for(hs, hotspots,
-        set(hotspot[hs].side, null);
-    );
-	</action>
-
-	<action name="init_weights">
-		set(weight.corona,3);
-		set(weight.cuchara,1);
-		set(weight.alfora,2);
-		set(weight.manzana,2);
-		set(weight.moneda,1);
-		set(weight.piedra,4);
-	</action>
-
-	<action name="reset_balance">
-		set(balance.left,0);
-		set(balance.right,0);
-	</action>
-
-	<action name="place_left">
-		sub(balance.right, weight[%1]);
-		add(balance.left,  weight[%1]);
-	</action>
-
-	<action name="place_right">
-		sub(balance.left,  weight[%1]);
-		add(balance.right, weight[%1]);
-	</action>
-
 	<action name="check_balance">
-		if(peso_izq == peso_der != 0,
+		if(peso_izq == peso_der,
 			set(hotspot[Balanza_Respuesta_Correcta].visible, true);
 			incrementar_contador();
 			set(hotspot[texto_contador].visible, true);
@@ -505,17 +495,9 @@
 		);
 	</action>
 
-	<action name="show_correct">
-		hide_spztano_elements2();
-		set(hotspot[Balanza_Respuesta_Correcta].visible,true);
+	<action name="ocultarb">
+		set(hotspot[pista].visible, true);
 	</action>
-
-	<action name="show_incorrect">
-		hide_spztano_elements2();
-		set(hotspot[Balanza_Respuesta_Incorrecta].visible,true);
-		set(hotspot[back_btn].visible,true);
-	</action>
-
 
 	<style name="estilo_contador_scene" 
 		type="text"
@@ -1246,6 +1228,15 @@
 				 onclick="show_spztano_elements(); set(visible,false);"
 		/>
 
+		<hotspot name="Leyenda_de_Pesos"
+				 url="images/Leyenda de Pesos.png"
+				 ath="180"
+				 atv="0"
+				 scale="0.05"
+				 distorted="true"
+				 onclick="check_balance();"
+		/>
+
 		<!-- Botones de combinaciones -->
 		<hotspot name="combo_btn_1"
 				 url="images/Balanzaa.png"
@@ -1265,7 +1256,7 @@
 		        ath="-25"
 		        atv="6"
 				scale="0.02"
-				weight="4"
+				weight="5"
 				capture="true"
 				onclick="place_left('obj_corona1'); moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)); "
 		/>
@@ -1316,7 +1307,7 @@
 		        ath="-37"
 		        atv="11"
 				scale="0.02"
-				weight="5"
+				weight="4"
 				capture="true"
 				onclick="place_left('obj_piedra1'); moveMyHotspot('obj_piedra1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
@@ -1327,7 +1318,7 @@
 		        ath="25"
 		        atv="6"
 				scale="0.02"
-				weight="4"
+				weight="5"
 				capture="true"
 				onclick="place_right('obj_corona2'); moveMyHotspot2('obj_corona2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
@@ -1378,7 +1369,7 @@
 		        ath="37"
 		        atv="11"
 				scale="0.02"
-				weight="5"
+				weight="4"
 				capture="true"
 				onclick="place_right('obj_piedra2'); moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
@@ -1402,14 +1393,14 @@
 				 onclick="check_balance();"
 		/>
 
-		<!-- Botón de volver -->
-		<hotspot name="back_btn"
-		         style="skin_hotspotstyle2"
-				 url="images/backIcon.png"
-				 scale="0.06"
-				 ath="-40"
-				 atv="-25"
-				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
+		<!-- Botón de pista -->
+		<hotspot name="pista"
+				 url="images/pista.png"
+				 ath="37"
+				 atv="-10"
+				 scale="0.1"
+				 distorted="true"
+				 onclick=""
 		/>
 
 		<!-- Hotspots de respuesta correcta e incorrecta -->
@@ -1432,7 +1423,16 @@
 				 rotate="180"
 				 distorted="true"
 				 visible="false"
-				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear));"
+				 onclick="loadscene('scene_Spztano', null, MERGE, BLEND(0.5,linear)); ocultarb();"
+		/>
+
+		<hotspot name="btn_continuar"
+				 url="images/btn_continuar.png"
+				 ath="0"
+				 atv="-25"
+				 scale="0.03"
+				 distorted="true"
+				 onclick="check_balance();"
 		/>
 	</scene>
 
@@ -1452,7 +1452,6 @@
 			<cube url="panos/Tunel.tiles/vr/pano_%s.jpg" />
 		</image>
 
-
 		<hotspot name="Ending"
 			type="image"
 			url="images/ending.png"
@@ -1460,68 +1459,82 @@
 			atv="0"
 			depth="2500"
 			scale="4.0"
-			rx="0" ry="0" rz="0"
-			ox="0.0" oy="0.0"
-			tx="0" ty="0" tz="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf2();" />
-		
-			<hotspot name="Papiro_1"
+			onclick="ocultarf2();" 
+		/>
+
+		<hotspot name="btn_comprobar"
+			url="images/btn_continuar.png"
+			ath="0"
+			atv="15"
+			scale="0.07"
+			distorted="true"
+			onclick=""
+		/>
+
+		<hotspot name="Papiro_0"
 			type="image"
-			url="images/Papiro.png"
+			url="images/Recta_final.png"
+			ath="0"
+			atv="0"
+			scale="0.5"
+			depth="2500"
+			visible="true"
+			distorted="true"
+			onclick="ocultarf0();" 
+		/>
+
+		<hotspot name="Papiro_1"
+			type="image"
+			url="images/ultimo_desafio.png"
 			ath="0"
 			atv="0"
 			depth="2500"
-			scale="4.0"
-			rx="0" ry="0" rz="0"
-			ox="0.0" oy="0.0"
-			tx="0" ty="0" tz="0"
+			scale="0.5"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" />
+			onclick="ocultarf1();" 
+		/>
 
-			<hotspot name="Papiro_2"
+		<hotspot name="Papiro_2"
 			type="image"
 			url="images/Papiro.png"
 			ath="-40"
 			atv="0"
 			depth="2500"
 			scale="2.0"
-			rx="0" ry="0" rz="0"
-			ox="0.0" oy="0.0"
-			tx="0" ty="0" tz="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" />
+			onclick="ocultarf1();" 
+		/>
 
-			<hotspot name="Papiro_3"
+		<hotspot name="Papiro_3"
 			type="image"
 			url="images/Papiro.png"
 			ath="40"
 			atv="0"
 			depth="2500"
 			scale="2.0"
-			rx="0" ry="0" rz="0"
-			ox="0.0" oy="0.0"
-			tx="0" ty="0" tz="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" />
+			onclick="ocultarf1();" 
+		/>
 
-			<hotspot name="Papiro_4"
+		<hotspot name="Papiro_4"
 			type="image"
 			url="images/Papiro.png"
 			ath="0"
 			atv="0"
 			depth="2500"
 			scale="2.0"
-			rx="0" ry="0" rz="0"
-			ox="0.0" oy="0.0"
-			tx="0" ty="0" tz="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" />
+			onclick="ocultarf1();" 
+		/>
+
+
+
 	</scene>
 
 
