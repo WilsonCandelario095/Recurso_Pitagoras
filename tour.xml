@@ -347,7 +347,7 @@
 		set(hotspot[btn_comprobar].visible, false);
 	</action>
 
-	<action name="iniciof2">
+	<action name="ocultarf2">
 		set(hotspot[Papiro_0].visible, false);
 		set(hotspot[Papiro_1].visible, false);
 		set(hotspot[Papiro_2].visible, false);
@@ -1470,7 +1470,7 @@
 			atv="15"
 			scale="0.07"
 			distorted="true"
-			onclick=""
+			onclick="ocultarf2();"
 		/>
 
 		<hotspot name="Papiro_0"
