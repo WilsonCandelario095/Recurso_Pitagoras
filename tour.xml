@@ -289,6 +289,8 @@
 		set(hotspot[incorrectoe].visible, true);
 		set(hotspot[poliE_3].visible, false);
 		set(hotspot[poliE_3NoPoints].visible, true);
+		set(hotspot[poliE_5].visible, false);
+		set(hotspot[poliE_5NoPoints].visible, true);
 	</action>
 
 	<action name="resete_astrolabio_elements4">
@@ -545,7 +547,7 @@
 
 	<events onloaded="delayedcall(0.2, actualizar_pantalla());" />
 
-	<layer name="creditos" url="images/creditos.png" keep="true" enabled="true" align="centercenter" x="0" y="0" visible="false" alpha="1" scale="1.3" scale.mobile="0.2" onclick="set(layer[creditos].visible,false);"/>
+	<layer name="creditos" url="images/creditos.png" keep="true" enabled="true" align="centercenter" x="0" y="0" visible="false" alpha="1" scale="0.4" scale.mobile="0.2" onclick="set(layer[creditos].visible,false);"/>
 	<layer name="botoncreditos" url="images/creditosboton.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.2" scale.mobile="0.2" onclick="set(layer[creditos].visible,true);"/>
 
 
@@ -603,7 +605,7 @@
 			set(hotspot[newhs_2].visible, false);
 
 			set(hotspot[Correcto].visible, true);
-			set(hotspot[EscenaAstrolabio].visible, true);
+			set(hotspot[PitagorasCompletado].visible, true);
 			set(hotspot[hs_lira_triangle_Correcto].visible, true);
 			set(hotspot[hs_number4Correcto].visible, true);
 			set(hotspot[hs_number3Correcto].visible, true);
@@ -709,7 +711,7 @@
 			ath="0"
 			atv="0"
 			depth="2500"
-			scale="4.0"
+			scale="1.0"
 			rx="0" ry="0" rz="0"
 			ox="0.0" oy="0.0"
 			tx="0" ty="0" tz="0"
@@ -724,7 +726,7 @@
 			rx="-10" ry="0" rz="0"
 			ox="0.0" oy="0.0"
 			tx="0" ty="0" tz="0"
-			scale="1.5"
+			scale="0.3"
 			distorted="true"
 			scale.mobile="0.2" 
 			visible="false"
@@ -751,7 +753,7 @@
 
 		<hotspot name="LiraInfo" 
          url="images/LiraInfo.png" 
-         scale="0.8" 
+         scale="0.3" 
 		 ath="-45.8809090" atv="-21.0074160"
 		 rx="-10" ry="0" rz="0"
 		 ox="0.0" oy="0.0"
@@ -814,19 +816,14 @@
 		 visible="false"
          />
 
-		<hotspot name="EscenaAstrolabio" 
-         url="images/Astrolabio.webp" 
-         scale="0.5" 
-		 ath="-1.0374359" atv="8.9553950"
-		 rx="-10" ry="0" rz="0"
-		 ox="0.0" oy="0.0"
-		 tx="0" ty="0" tz="0"
-		 distorted="true"
-         scale.mobile="0.2" 
-		 handcursor="true"
-		 visible="false"
-		 onclick="loadscene('scene_Espacio', null, MERGE, BLEND(0.5,linear));"
-         />
+		<hotspot name="PitagorasCompletado"
+			url="images/Correctog.png" 
+			distorted="true"
+			scale="0.1"
+			ath="0.0" atv="0.0"
+			visible="false"
+			onclick="loadscene('scene_Espacio', null, MERGE, BLEND(0.5,linear));">
+		</hotspot>
 
 		<!-- Hotspot triangular para la lira -->
 		<hotspot name="hs_lira_triangle_Correcto" ath="42.9771762" atv="-7.1978632" scale="0.04" keep="false" tooltip="Lira" zoom="false" style="triangle_fixed_style"
@@ -1163,6 +1160,13 @@
 			<point ath="32.918003126870985" atv="7.558881983825053" />
 		</hotspot>
 
+		<hotspot name="poliE_5NoPoints" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" visible="false" onclick="set(hotspot[correctoe].visible, true);">
+			<point ath="32.9514917531331" atv="1.7847113239700225" />
+			<point ath="45.867033296663635" atv="1.273201424326321" />
+			<point ath="46.09320421943801" atv="6.997915021013339" />
+			<point ath="32.918003126870985" atv="7.558881983825053" />
+		</hotspot>
+
 		<hotspot name="correctoe"
 			url="images/Correctog.png" 
 			distorted="true"
@@ -1458,7 +1462,7 @@
 			ath="0"
 			atv="0"
 			depth="2500"
-			scale="4.0"
+			scale="1.0"
 			visible="true"
 			distorted="true"
 			onclick="ocultarf2();" 
