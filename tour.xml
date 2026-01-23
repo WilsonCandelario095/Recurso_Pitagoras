@@ -1381,7 +1381,7 @@
 				 atv="-30"
 				 scale="0.3"
 				 distorted="true"
-				 onclick="check_balance();"
+				 onclick="check_balance(); hide_spztano_elements2();"
 		/>
 
 		<hotspot name="validate_btn"
@@ -1390,14 +1390,14 @@
 				 atv="-30"
 				 scale="0.04"
 				 distorted="true"
-				 onclick="check_balance();"
+				 onclick="check_balance(); hide_spztano_elements2();"
 		/>
 
 		<!-- Botón de pista -->
 		<hotspot name="pista"
 				 url="images/pista.png"
-				 ath="37"
-				 atv="-10"
+				 ath="35"
+				 atv="-20"
 				 scale="0.1"
 				 distorted="true"
 				 onclick=""
