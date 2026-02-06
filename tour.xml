@@ -337,7 +337,15 @@
 		set(hotspot[Papiro_2].visible, true);
 		set(hotspot[Papiro_3].visible, true);
 		set(hotspot[Papiro_4].visible, true);
-		set(hotspot[btn_comprobar].visible, true);
+		set(hotspot[Pieza14Correcta].visible, true);
+		set(hotspot[Pieza1Incorrecta].visible, true);
+		set(hotspot[Pieza2Incorrecta].visible, true);
+		set(hotspot[Pieza3Incorrecta].visible, true);
+		set(hotspot[Pieza3Correcta].visible, true);
+		set(hotspot[Pieza4Incorrecta].visible, true);
+		set(hotspot[Pieza5Incorrecta].visible, true);
+		set(hotspot[Pieza15Correcta].visible, true);
+		set(hotspot[Pieza16Correcta].visible, true);
 	</action>
 
 	<action name="iniciof">
@@ -347,6 +355,15 @@
 		set(hotspot[Papiro_3].visible, false);
 		set(hotspot[Papiro_4].visible, false);
 		set(hotspot[btn_comprobar].visible, false);
+		set(hotspot[Pieza14Correcta].visible, false);
+		set(hotspot[Pieza1Incorrecta].visible, false);
+		set(hotspot[Pieza2Incorrecta].visible, false);
+		set(hotspot[Pieza3Incorrecta].visible, false);
+		set(hotspot[Pieza3Correcta].visible, false);
+		set(hotspot[Pieza4Incorrecta].visible, false);
+		set(hotspot[Pieza5Incorrecta].visible, false);
+		set(hotspot[Pieza15Correcta].visible, false);
+		set(hotspot[Pieza16Correcta].visible, false);
 	</action>
 
 	<action name="ocultarf2">
@@ -357,6 +374,15 @@
 		set(hotspot[Papiro_4].visible, false);
 		set(hotspot[btn_comprobar].visible, false);
 		set(hotspot[Ending].visible, true);
+		set(hotspot[Pieza14Correcta].visible, false);
+		set(hotspot[Pieza1Incorrecta].visible, false);
+		set(hotspot[Pieza2Incorrecta].visible, false);
+		set(hotspot[Pieza3Incorrecta].visible, false);
+		set(hotspot[Pieza3Correcta].visible, false);
+		set(hotspot[Pieza4Incorrecta].visible, false);
+		set(hotspot[Pieza5Incorrecta].visible, false);
+		set(hotspot[Pieza15Correcta].visible, false);
+		set(hotspot[Pieza16Correcta].visible, false);
 	</action>
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
@@ -377,6 +403,8 @@
 	<action name="init_counters">
 		set(peso_izq, 0);
 		set(peso_der, 0);
+		set(peso, 0);
+		set(pesoV, 3);
 	</action>
 
 	<action name="moveMyHotspot"><![CDATA[
@@ -441,6 +469,37 @@
 
 	]]></action>
 
+
+	<action name="moveMyHotspot3"><![CDATA[
+		if(!hotspot[%1].isMoved,
+
+			// Guardar posición original
+			set(hotspot[%1].orig_ath, get(hotspot[%1].ath));
+			set(hotspot[%1].orig_atv, get(hotspot[%1].atv));
+
+			tween(hotspot[%1].ath, calc(0), 0.7, easeOutQuad);
+			tween(hotspot[%1].atv, calc(0), 0.7, easeOutQuad);
+
+			add(peso, hotspot[%1].weight);
+
+			set(hotspot[%1].side, 'left');
+			set(hotspot[%1].isMoved, true);
+			toggle_counterpart(%1, false);
+		,
+			// REGRESAR AL ORIGEN
+			tween(hotspot[%1].ath, get(hotspot[%1].orig_ath), 0.7, easeOutQuad);
+			tween(hotspot[%1].atv, get(hotspot[%1].orig_atv), 0.7, easeOutQuad);
+
+			sub(peso, hotspot[%1].weight);
+
+			set(hotspot[%1].side, null);
+			set(hotspot[%1].isMoved, false);
+			toggle_counterpart(%1, true);
+		);
+			check_balance2();
+
+	]]></action>
+
 	<action name="toggle_counterpart">
 		if(%1 == 'obj_corona1',
 			set(hotspot[obj_corona2].enabled, %2);
@@ -494,6 +553,15 @@
 		,
 			set(hotspot[Balanza_Respuesta_Correcta].visible, false);
 			set(hotspot[Balanza_Respuesta_Incorrecta].visible, true);
+		);
+	</action>
+
+	<action name="check_balance2">
+		if(peso == pesoV,
+			incrementar_contador();
+			set(hotspot[texto_contador].visible, true);
+		,
+			set(hotspot[btn_comprobar].visible, true);
 		);
 	</action>
 
@@ -1238,7 +1306,6 @@
 				 atv="0"
 				 scale="0.05"
 				 distorted="true"
-				 onclick="check_balance();"
 		/>
 
 		<!-- Botones de combinaciones -->
@@ -1262,7 +1329,7 @@
 				scale="0.02"
 				weight="5"
 				capture="true"
-				onclick="place_left('obj_corona1'); moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)); "
+				onclick="moveMyHotspot('obj_corona1'); set(enabled,false); delayedcall(1, set(enabled,true)); "
 		/>
 
 		<hotspot name="obj_cuchara1"
@@ -1272,8 +1339,7 @@
 				scale="0.02"
 				weight="2"
 				capture="true"
-				onclick="
-				place_left('obj_cuchara1'); moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot('obj_cuchara1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora1"
@@ -1283,7 +1349,7 @@
 				scale="0.02"
 				weight="6"
 				capture="true"
-				onclick="place_left('obj_alfora1'); moveMyHotspot('obj_alfora1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot('obj_alfora1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_manzana1"
@@ -1293,7 +1359,7 @@
 				scale="0.02"
 				weight="3"
 				capture="true"
-				onclick="place_left('obj_manzana1'); moveMyHotspot('obj_manzana1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot('obj_manzana1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_moneda1"
@@ -1303,7 +1369,7 @@
 				scale="0.02"
 				weight="1"
 				capture="true"
-				onclick="place_left('obj_moneda1'); moveMyHotspot('obj_moneda1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot('obj_moneda1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_piedra1"
@@ -1313,7 +1379,7 @@
 				scale="0.02"
 				weight="4"
 				capture="true"
-				onclick="place_left('obj_piedra1'); moveMyHotspot('obj_piedra1'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot('obj_piedra1'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<!-- BOTÓN DERECHO -->
@@ -1324,7 +1390,7 @@
 				scale="0.02"
 				weight="5"
 				capture="true"
-				onclick="place_right('obj_corona2'); moveMyHotspot2('obj_corona2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot2('obj_corona2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_cuchara2"
@@ -1334,8 +1400,7 @@
 				scale="0.02"
 				weight="2"
 				capture="true"
-				onclick="
-				place_right('obj_cuchara2'); moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot2('obj_cuchara2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_alfora2"
@@ -1345,7 +1410,7 @@
 				scale="0.02"
 				weight="6"
 				capture="true"
-				onclick="place_right('obj_alfora2'); moveMyHotspot2('obj_alfora2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot2('obj_alfora2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_manzana2"
@@ -1355,7 +1420,7 @@
 				scale="0.02"
 				weight="3"
 				capture="true"
-				onclick="place_right('obj_manzana2'); moveMyHotspot2('obj_manzana2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot2('obj_manzana2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_moneda2"
@@ -1365,7 +1430,7 @@
 				scale="0.02"
 				weight="1"
 				capture="true"
-				onclick="place_right('obj_moneda2'); moveMyHotspot2('obj_moneda2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot2('obj_moneda2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<hotspot name="obj_piedra2"
@@ -1375,7 +1440,7 @@
 				scale="0.02"
 				weight="4"
 				capture="true"
-				onclick="place_right('obj_piedra2'); moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true));"
+				onclick="moveMyHotspot2('obj_piedra2'); set(enabled,false); delayedcall(1, set(enabled,true));"
 		/>
 
 		<!-- Botón de validación -->
@@ -1440,7 +1505,7 @@
 		/>
 	</scene>
 
-	<scene name="scene_Tunel" title="Tunel" onstart="iniciof();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Tunel.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="scene_Tunel" title="Tunel" onstart="iniciof(); init_counters();" havevrimage.mobilevr="false" havevrimage.no-mobilevr="true" thumburl="panos/Tunel.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
 
@@ -1465,7 +1530,7 @@
 			scale="1.0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf2();" 
+			onclick="" 
 		/>
 
 		<hotspot name="btn_comprobar"
@@ -1542,10 +1607,11 @@
 			url="images/pieza_14_correcta.png"
 			ath="-47.6490221" atv="-3.3100191"
 			depth="2500"
+			weight="1"
 			scale="0.05"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" 
+			onclick="moveMyHotspot3('Pieza14Correcta'); set(enabled,false); delayedcall(1, set(enabled,true));" 
 		/>
 
 		<hotspot name="Pieza1Incorrecta"
@@ -1554,10 +1620,11 @@
 			ath="-38.8946183" atv="-6.1860750"
 			depth="2500"
 			scale="0.05"
+			weight="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" 
-		/>
+			onclick="moveMyHotspot3('Pieza1Incorrecta'); set(enabled,false); delayedcall(1, set(enabled,true));"  
+		/> 
 
 		<hotspot name="pieza2Incorrecta"
 			type="image"
@@ -1565,9 +1632,10 @@
 			ath="-34.8946183" atv="9.1860750"
 			depth="2500"
 			scale="0.05"
+			weight="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" 
+			onclick="moveMyHotspot3('pieza2Incorrecta'); set(enabled,false); delayedcall(1, set(enabled,true));" 
 		/>
 
 		<hotspot name="pieza3Incorrecta"
@@ -1576,9 +1644,10 @@
 			ath="-45.8946183" atv="3.1860750"
 			depth="2500"
 			scale="0.05"
+			weight="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" 
+			onclick="moveMyHotspot3('pieza3Incorrecta'); set(enabled,false); delayedcall(1, set(enabled,true));" 
 		/>
 
 		<hotspot name="Pieza3Correcta"
@@ -1586,10 +1655,11 @@
 			url="images/pieza_3_correcta.png"
 			ath="35.8779074" atv="-6.9558645"
 			depth="2500"
+			weight="1"
 			scale="0.05"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" 
+			onclick="moveMyHotspot3('Pieza3Correcta'); set(enabled,false); delayedcall(1, set(enabled,true));" 
 		/>
 
 		<hotspot name="Pieza15Correcta"
@@ -1597,10 +1667,11 @@
 			url="images/pieza_15_correcta.png"
 			ath="45.0393927" atv="3.0678348"
 			depth="2500"
+			weight="1"
 			scale="0.05"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" 
+			onclick="moveMyHotspot3('Pieza15Correcta'); set(enabled,false); delayedcall(1, set(enabled,true));" 
 		/>
 
 		<hotspot name="Pieza4Incorrecta"
@@ -1609,9 +1680,10 @@
 			ath="45.9114073" atv="-2.4862642"
 			depth="2500"
 			scale="0.05"
+			weight="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" 
+			onclick="moveMyHotspot3('Pieza4Incorrecta'); set(enabled,false); delayedcall(1, set(enabled,true));" 
 		/>
 
 		<hotspot name="Pieza5Incorrecta"
@@ -1620,12 +1692,11 @@
 			ath="30.9571333" atv="3.0596854"
 			depth="2500"
 			scale="0.05"
+			weight="0"
 			visible="true"
 			distorted="true"
-			onclick="ocultarf1();" 
+			onclick="moveMyHotspot3('Pieza5Incorrecta'); set(enabled,false); delayedcall(1, set(enabled,true));"  
 		/>
-
-
 
 	</scene>
 
