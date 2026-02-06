@@ -560,8 +560,9 @@
 		if(peso == pesoV,
 			incrementar_contador();
 			set(hotspot[texto_contador].visible, true);
-		,
 			set(hotspot[btn_comprobar].visible, true);
+		,
+			trace('peso=', get(peso), ' pesoV=', get(pesoV));
 		);
 	</action>
 
