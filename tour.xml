@@ -1233,7 +1233,7 @@
 			<point ath="32.35166854690351" atv="-0.5966414508463503" />
 		</hotspot>
 
-		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="incrementar_contador(); set(hotspot[correctoe].visible, true);">
+		<hotspot name="poliE_5" fillcolor="0x00FF00" fillalpha="0.12" bordercolor="0x00FF00" borderalpha="1.0" borderwidth="6" handcursor="true" tooltip="Área de la elipse" onclick="incrementar_contador(); set(hotspot[correctoe].visible, true); set(hotspot[texto_contador].visible, true);">
 			<point ath="32.9514917531331" atv="1.7847113239700225" />
 			<point ath="45.867033296663635" atv="1.273201424326321" />
 			<point ath="46.09320421943801" atv="6.997915021013339" />
