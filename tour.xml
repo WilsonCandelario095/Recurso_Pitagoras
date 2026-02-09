@@ -1546,9 +1546,9 @@
 		/>
 
 		<hotspot name="btn_comprobar"
-			url="images/btn_continuar.png"
-			ath="0"
-			atv="15"
+			url="images/correctog.png"
+			ath="2.5"
+			atv="20"
 			scale="0.07"
 			distorted="true"
 			onclick="ocultarf2();"
