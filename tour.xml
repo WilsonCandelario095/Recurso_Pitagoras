@@ -1546,7 +1546,7 @@
 		/>
 
 		<hotspot name="btn_comprobar"
-			url="images/correctog.png"
+			url="images/Correctog.png"
 			ath="2.5"
 			atv="20"
 			scale="0.07"
@@ -1556,7 +1556,7 @@
 
 		<hotspot name="Papiro_0"
 			type="image"
-			url="images/Recta_final.png"
+			url="images/Recta_Final.png"
 			ath="0"
 			atv="0"
 			scale="0.5"
@@ -1616,7 +1616,7 @@
 
 		<hotspot name="Pieza14Correcta"
 			type="image"
-			url="images/pieza_14_correcta.png"
+			url="images/pieza_14_Correcta.png"
 			ath="-47.6490221" atv="-3.3100191"
 			depth="2500"
 			weight="1"
@@ -1640,7 +1640,7 @@
 
 		<hotspot name="pieza2Incorrecta"
 			type="image"
-			url="images/Pieza_incorrecta_2.png"
+			url="images/Pieza_Incorrecta_2.png"
 			ath="-34.8946183" atv="9.1860750"
 			depth="2500"
 			scale="0.05"
@@ -1652,7 +1652,7 @@
 
 		<hotspot name="pieza3Incorrecta"
 			type="image"
-			url="images/Pieza_incorrecta_3.png"
+			url="images/Pieza_Incorrecta_3.png"
 			ath="-45.8946183" atv="3.1860750"
 			depth="2500"
 			scale="0.05"
@@ -1664,7 +1664,7 @@
 
 		<hotspot name="Pieza3Correcta"
 			type="image"
-			url="images/pieza_3_correcta.png"
+			url="images/Pieza_3_correcta.png"
 			ath="35.8779074" atv="-6.9558645"
 			depth="2500"
 			weight="1"
@@ -1676,7 +1676,7 @@
 
 		<hotspot name="Pieza15Correcta"
 			type="image"
-			url="images/pieza_15_correcta.png"
+			url="images/Pieza_15_Correcta.png"
 			ath="45.0393927" atv="3.0678348"
 			depth="2500"
 			weight="1"
@@ -1688,7 +1688,7 @@
 
 		<hotspot name="Pieza4Incorrecta"
 			type="image"
-			url="images/pieza_incorrecta_4.png"
+			url="images/Pieza_incorrecta_4.png"
 			ath="45.9114073" atv="-2.4862642"
 			depth="2500"
 			scale="0.05"
@@ -1700,7 +1700,7 @@
 
 		<hotspot name="Pieza5Incorrecta"
 			type="image"
-			url="images/pieza_incorrecta_5.png"
+			url="images/Pieza_incorrecta_5.png"
 			ath="30.9571333" atv="3.0596854"
 			depth="2500"
 			scale="0.05"
