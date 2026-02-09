@@ -1616,7 +1616,7 @@
 
 		<hotspot name="Pieza14Correcta"
 			type="image"
-			url="images/pieza_14_Correcta.png"
+			url="images/Pieza_14_Correcta.png"
 			ath="-47.6490221" atv="-3.3100191"
 			depth="2500"
 			weight="1"
